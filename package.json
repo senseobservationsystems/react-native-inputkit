@@ -23,14 +23,13 @@
   "license": "MIT",
   "licenseFilename": "LICENSE",
   "readmeFilename": "README.md",
-  "peerDependencies": {
-    "react": "^16.8.1",
-    "react-native": ">=0.59.0-rc.0 <1.0.x"
-  },
   "devDependencies": {
     "@react-native-community/bob": "^0.7.0",
-    "react": "^16.8.3",
-    "react-native": "^0.59.10"
+    "@types/react": "^16.9.15",
+    "@types/react-native": "^0.60.23",
+    "react": "^16.12.0",
+    "react-native": "^0.61.4",
+    "typescript": "^3.7.3"
   },
   "react-native": "src/index.ts",
   "module": "lib/module/index.js",
