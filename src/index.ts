@@ -1,5 +1,11 @@
 import { NativeModules } from 'react-native';
 
-const { InputKit } = NativeModules;
+const InputKit = NativeModules.InputKit;
 
-export default InputKit;
+export function sampleMethod() {
+    return InputKit.sampleMethod();
+}
+
+export default {
+    sampleMethod,
+}
