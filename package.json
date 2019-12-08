@@ -3,7 +3,14 @@
   "title": "React Native Input Kit",
   "version": "1.0.0",
   "description": "TODO",
+  "react-native": "src/index.ts",
+  "types": "lib/typescript/index.d.ts",
   "main": "lib/commonjs/index.js",
+  "module": "lib/module/index.js",
+  "files": [
+    "src",
+    "lib"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "bob build"
@@ -31,13 +38,6 @@
     "react-native": "^0.61.4",
     "typescript": "^3.7.3"
   },
-  "react-native": "src/index.ts",
-  "module": "lib/module/index.js",
-  "types": "lib/typescript/src/index.d.ts",
-  "files": [
-    "src",
-    "lib"
-  ],
   "@react-native-community/bob": {
     "source": "src",
     "output": "lib",
