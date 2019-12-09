@@ -8,8 +8,11 @@
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",
   "files": [
-    "src",
-    "lib"
+    "android/",
+    "ios/",
+    "lib/",
+    "src/",
+    "RNInputKit.podspec"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
