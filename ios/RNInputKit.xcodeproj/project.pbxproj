@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4743BBDA23A799F400C838F1 /* SwiftModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4743BBD923A799F400C838F1 /* SwiftModule.swift */; };
+		4743BBDC23A79ABB00C838F1 /* SwiftModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 4743BBDB23A79ABB00C838F1 /* SwiftModule.m */; };
 		47AAB73F239E97B90041E986 /* RNInputKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 47AAB73E239E97B90041E986 /* RNInputKit.m */; };
 /* End PBXBuildFile section */
 
@@ -24,6 +26,9 @@
 
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libRNInputKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNInputKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		4743BBD823A799F400C838F1 /* RNInputKit-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RNInputKit-Bridging-Header.h"; sourceTree = "<group>"; };
+		4743BBD923A799F400C838F1 /* SwiftModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftModule.swift; sourceTree = "<group>"; };
+		4743BBDB23A79ABB00C838F1 /* SwiftModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SwiftModule.m; sourceTree = "<group>"; };
 		47AAB73D239E97AB0041E986 /* RNInputKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNInputKit.h; sourceTree = "<group>"; };
 		47AAB73E239E97B90041E986 /* RNInputKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNInputKit.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -52,6 +57,9 @@
 			children = (
 				47AAB73D239E97AB0041E986 /* RNInputKit.h */,
 				47AAB73E239E97B90041E986 /* RNInputKit.m */,
+				4743BBD923A799F400C838F1 /* SwiftModule.swift */,
+				4743BBD823A799F400C838F1 /* RNInputKit-Bridging-Header.h */,
+				4743BBDB23A79ABB00C838F1 /* SwiftModule.m */,
 			);
 			path = RNInputKit;
 			sourceTree = "<group>";
@@ -95,6 +103,7 @@
 				TargetAttributes = {
 					58B511DA1A9E6C8500147676 = {
 						CreatedOnToolsVersion = 6.1.1;
+						LastSwiftMigration = 1120;
 					};
 				};
 			};
@@ -122,6 +131,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				47AAB73F239E97B90041E986 /* RNInputKit.m in Sources */,
+				4743BBDC23A79ABB00C838F1 /* SwiftModule.m in Sources */,
+				4743BBDA23A799F400C838F1 /* SwiftModule.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -224,32 +235,41 @@
 		58B511F01A9E6C8500147676 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../../../React/**",
 					"$(SRCROOT)/../../react-native/React/**",
 				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = RNInputKit;
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "RNInputKit/RNInputKit-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
 		58B511F11A9E6C8500147676 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../../../React/**",
 					"$(SRCROOT)/../../react-native/React/**",
 				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = RNInputKit;
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "RNInputKit/RNInputKit-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
