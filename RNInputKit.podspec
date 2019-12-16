@@ -3,7 +3,7 @@ require 'json'
 package = JSON.parse(File.read('./package.json'))
 
 Pod::Spec.new do |s|
-  s.name         = "react-native-inputkit"
+  s.name         = "RNInputKit"
   s.version      = package["version"]
   s.summary      = package["description"]
   s.homepage     = "https://github.com/github_account/react-native-inputkit"
