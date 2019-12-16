@@ -1,11 +1,16 @@
 import { NativeModules } from 'react-native';
 
-const InputKit = NativeModules.InputKit;
+const TestModule = NativeModules.RNInputKit;
 
 export function sampleMethod() {
-    return InputKit.sampleMethod();
+    return "sample method (no native)";
+}
+
+export function testMethod(){
+    return TestModule.test();
 }
 
 export default {
     sampleMethod,
+    testMethod,
 }
