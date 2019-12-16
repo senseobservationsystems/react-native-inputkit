@@ -1,5 +1,5 @@
 {
-  "name": "react-native-input-kit",
+  "name": "react-native-inputkit",
   "title": "React Native Input Kit",
   "version": "1.0.0",
   "description": "TODO",
@@ -20,8 +20,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/github_account/react-native-input-kit.git",
-    "baseUrl": "https://github.com/github_account/react-native-input-kit"
+    "url": "git+https://github.com/github_account/react-native-inputkit.git",
+    "baseUrl": "https://github.com/github_account/react-native-inputkit"
   },
   "keywords": [
     "react-native"

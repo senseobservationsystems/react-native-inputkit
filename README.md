@@ -1,16 +1,16 @@
-# react-native-input-kit
+# react-native-inputkit
 
 ## Getting started
 
-`$ npm install react-native-input-kit --save`
+`$ npm install react-native-inputkit --save`
 
 ### Mostly automatic installation
 
-`$ react-native link react-native-input-kit`
+`$ react-native link react-native-inputkit`
 
 ## Usage
 ```javascript
-import InputKit from 'react-native-input-kit';
+import InputKit from 'react-native-inputkit';
 
 // TODO: What to do with the module?
 InputKit;
