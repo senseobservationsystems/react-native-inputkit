@@ -9,9 +9,7 @@ import Foundation
 
 @objc(SwiftModule)
 class SwiftModule: NSObject {
-
-    @objc(swiftMethod:)
-    func swiftMethod() -> String {
-        return "swift method (native)"
+    @objc func swiftMethod(_ resolve: @escaping RCTPromiseResolveBlock, reject: @escaping RCTPromiseRejectBlock) {
+        resolve("swift method (native)");
   }
 }

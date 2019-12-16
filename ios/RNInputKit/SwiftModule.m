@@ -12,6 +12,6 @@
 
 @interface RCT_EXTERN_MODULE(SwiftModule, NSObject)
 
-RCT_EXTERN_METHOD(swiftMethod:)
+RCT_EXTERN_METHOD(swiftMethod:(RCTPromiseResolveBlock _Nonnull)resolve reject:(RCTPromiseRejectBlock _Nonnull)reject);
 
 @end
