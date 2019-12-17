@@ -1,4 +1,6 @@
-platform :ios, '9.0'
+IOS_SDK = '10.0'.freeze
+platform :ios, IOS_SDK
+
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
 target 'RNInputKitExample' do
@@ -50,4 +52,18 @@ target 'RNInputKitExample-tvOS' do
     # Pods for testing
   end
 
+end
+
+# TODO: required, if not the example doesn't build: We use some HealthKit feature in HealthBridge+Background.swift which was included in iOS 9.3. Maybe there's a better way: specifying in podspec / xcode project (everywhere) at least ios 10.0?
+post_install do |installer|
+    installer.pods_project.targets.each do |target|
+        # manually change the deployment so we don't get complaints on xcode and travis
+        if [
+            'RNInputKit',
+        ].include?(target.name)
+            target.build_configurations.each do |config|
+                config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = IOS_SDK
+            end
+        end
+    end
 end

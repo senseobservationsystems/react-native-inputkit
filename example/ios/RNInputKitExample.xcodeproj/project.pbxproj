@@ -17,6 +17,7 @@
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* RNInputKitExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* RNInputKitExampleTests.m */; };
 		3217C07B773C1A5D135FB03A /* libPods-RNInputKitExampleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B893B768A19F7E288A24851 /* libPods-RNInputKitExampleTests.a */; };
+		4762C9BC23A9382A00978E2D /* Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4762C9BB23A9382A00978E2D /* Empty.swift */; };
 		82CA72806A410E956C944741 /* libPods-RNInputKitExample-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C19BE3170F796DEAA2B7CB /* libPods-RNInputKitExample-tvOSTests.a */; };
 		99BE7173B18D0C56EE44FDD8 /* libPods-RNInputKitExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B137BC683353901CC681BF7 /* libPods-RNInputKitExample.a */; };
 		F7740ED81D43E131F2DBE3ED /* libPods-RNInputKitExample-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C152DABC258A067173828BA /* libPods-RNInputKitExample-tvOS.a */; };
@@ -57,6 +58,8 @@
 		2D02E47B1E0B4A5D006451C7 /* RNInputKitExample-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RNInputKitExample-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* RNInputKitExample-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "RNInputKitExample-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		39E80D83AB026FEC17BE1FE3 /* Pods-RNInputKitExample-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNInputKitExample-tvOS.release.xcconfig"; path = "Target Support Files/Pods-RNInputKitExample-tvOS/Pods-RNInputKitExample-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		4762C9BB23A9382A00978E2D /* Empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Empty.swift; sourceTree = "<group>"; };
+		47D6362F23A9341A00F58FA5 /* RNInputKitExample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RNInputKitExample-Bridging-Header.h"; sourceTree = "<group>"; };
 		552F2F34E81C638AC6275C56 /* Pods-RNInputKitExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNInputKitExample.debug.xcconfig"; path = "Target Support Files/Pods-RNInputKitExample/Pods-RNInputKitExample.debug.xcconfig"; sourceTree = "<group>"; };
 		6009383C521412911D5EB945 /* Pods-RNInputKitExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNInputKitExampleTests.release.xcconfig"; path = "Target Support Files/Pods-RNInputKitExampleTests/Pods-RNInputKitExampleTests.release.xcconfig"; sourceTree = "<group>"; };
 		6B893B768A19F7E288A24851 /* libPods-RNInputKitExampleTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RNInputKitExampleTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -134,7 +137,6 @@
 				23B813DDDE7D574C21BF908D /* Pods-RNInputKitExampleTests.debug.xcconfig */,
 				6009383C521412911D5EB945 /* Pods-RNInputKitExampleTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -148,6 +150,8 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				47D6362F23A9341A00F58FA5 /* RNInputKitExample-Bridging-Header.h */,
+				4762C9BB23A9382A00978E2D /* Empty.swift */,
 			);
 			name = RNInputKitExample;
 			sourceTree = "<group>";
@@ -292,6 +296,9 @@
 						CreatedOnToolsVersion = 6.2;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
+					13B07F861A680F5B00A75B9A = {
+						LastSwiftMigration = 1120;
+					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
 						ProvisioningStyle = Automatic;
@@ -308,6 +315,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -530,6 +538,7 @@
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				4762C9BC23A9382A00978E2D /* Empty.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -582,6 +591,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 23B813DDDE7D574C21BF908D /* Pods-RNInputKitExampleTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -605,6 +615,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6009383C521412911D5EB945 /* Pods-RNInputKitExampleTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = RNInputKitExampleTests/Info.plist;
@@ -626,6 +637,7 @@
 			baseConfigurationReference = 552F2F34E81C638AC6275C56 /* Pods-RNInputKitExample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				INFOPLIST_FILE = RNInputKitExample/Info.plist;
@@ -637,6 +649,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = RNInputKitExample;
+				SWIFT_OBJC_BRIDGING_HEADER = "RNInputKitExample-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -646,6 +661,7 @@
 			baseConfigurationReference = 88527D180B87E8CA5CDAD5C5 /* Pods-RNInputKitExample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = RNInputKitExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -656,6 +672,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = RNInputKitExample;
+				SWIFT_OBJC_BRIDGING_HEADER = "RNInputKitExample-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
@@ -820,6 +838,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -865,6 +884,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
