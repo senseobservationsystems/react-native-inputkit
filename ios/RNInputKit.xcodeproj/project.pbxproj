@@ -10,6 +10,25 @@
 		4743BBDA23A799F400C838F1 /* SwiftModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4743BBD923A799F400C838F1 /* SwiftModule.swift */; };
 		4743BBDC23A79ABB00C838F1 /* SwiftModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 4743BBDB23A79ABB00C838F1 /* SwiftModule.m */; };
 		47AAB73F239E97B90041E986 /* RNInputKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 47AAB73E239E97B90041E986 /* RNInputKit.m */; };
+		47EF2E6B23A8CFD600EF08D1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EF2E5423A8CFD600EF08D1 /* Constants.swift */; };
+		47EF2E6C23A8CFD600EF08D1 /* InputKitConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EF2E5523A8CFD600EF08D1 /* InputKitConstants.swift */; };
+		47EF2E6D23A8CFD600EF08D1 /* EventHandlerBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 47EF2E5723A8CFD600EF08D1 /* EventHandlerBridge.m */; };
+		47EF2E6E23A8CFD600EF08D1 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EF2E5823A8CFD600EF08D1 /* Event.swift */; };
+		47EF2E6F23A8CFD600EF08D1 /* ShortCodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EF2E5923A8CFD600EF08D1 /* ShortCodeGenerator.swift */; };
+		47EF2E7023A8CFD600EF08D1 /* EventHandlerBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EF2E5A23A8CFD600EF08D1 /* EventHandlerBridge.swift */; };
+		47EF2E7123A8CFD600EF08D1 /* HealthBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EF2E5C23A8CFD600EF08D1 /* HealthBridge.swift */; };
+		47EF2E7223A8CFD600EF08D1 /* HealthBridge+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EF2E5D23A8CFD600EF08D1 /* HealthBridge+Helper.swift */; };
+		47EF2E7323A8CFD600EF08D1 /* HealthBridge+Query.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EF2E5E23A8CFD600EF08D1 /* HealthBridge+Query.swift */; };
+		47EF2E7423A8CFD600EF08D1 /* HealthUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EF2E5F23A8CFD600EF08D1 /* HealthUtils.swift */; };
+		47EF2E7523A8CFD600EF08D1 /* HealthBridge+Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EF2E6023A8CFD600EF08D1 /* HealthBridge+Background.swift */; };
+		47EF2E7623A8CFD600EF08D1 /* HealthBridge+Realtime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EF2E6123A8CFD600EF08D1 /* HealthBridge+Realtime.swift */; };
+		47EF2E7723A8CFD600EF08D1 /* HealthBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 47EF2E6223A8CFD600EF08D1 /* HealthBridge.m */; };
+		47EF2E7823A8CFD600EF08D1 /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EF2E6423A8CFD600EF08D1 /* Extentions.swift */; };
+		47EF2E7923A8CFD600EF08D1 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EF2E6523A8CFD600EF08D1 /* Logger.swift */; };
+		47EF2E7A23A8CFD600EF08D1 /* UtilBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 47EF2E6623A8CFD600EF08D1 /* UtilBridge.m */; };
+		47EF2E7B23A8CFD600EF08D1 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EF2E6823A8CFD600EF08D1 /* Utils.swift */; };
+		47EF2E7C23A8CFD600EF08D1 /* LoggerBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 47EF2E6923A8CFD600EF08D1 /* LoggerBridge.m */; };
+		47EF2E7D23A8CFD600EF08D1 /* NativeLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 47EF2E6A23A8CFD600EF08D1 /* NativeLogger.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +50,26 @@
 		4743BBDB23A79ABB00C838F1 /* SwiftModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SwiftModule.m; sourceTree = "<group>"; };
 		47AAB73D239E97AB0041E986 /* RNInputKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNInputKit.h; sourceTree = "<group>"; };
 		47AAB73E239E97B90041E986 /* RNInputKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNInputKit.m; sourceTree = "<group>"; };
+		47EF2E5423A8CFD600EF08D1 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		47EF2E5523A8CFD600EF08D1 /* InputKitConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputKitConstants.swift; sourceTree = "<group>"; };
+		47EF2E5723A8CFD600EF08D1 /* EventHandlerBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventHandlerBridge.m; sourceTree = "<group>"; };
+		47EF2E5823A8CFD600EF08D1 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		47EF2E5923A8CFD600EF08D1 /* ShortCodeGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShortCodeGenerator.swift; sourceTree = "<group>"; };
+		47EF2E5A23A8CFD600EF08D1 /* EventHandlerBridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventHandlerBridge.swift; sourceTree = "<group>"; };
+		47EF2E5C23A8CFD600EF08D1 /* HealthBridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthBridge.swift; sourceTree = "<group>"; };
+		47EF2E5D23A8CFD600EF08D1 /* HealthBridge+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HealthBridge+Helper.swift"; sourceTree = "<group>"; };
+		47EF2E5E23A8CFD600EF08D1 /* HealthBridge+Query.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HealthBridge+Query.swift"; sourceTree = "<group>"; };
+		47EF2E5F23A8CFD600EF08D1 /* HealthUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthUtils.swift; sourceTree = "<group>"; };
+		47EF2E6023A8CFD600EF08D1 /* HealthBridge+Background.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HealthBridge+Background.swift"; sourceTree = "<group>"; };
+		47EF2E6123A8CFD600EF08D1 /* HealthBridge+Realtime.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HealthBridge+Realtime.swift"; sourceTree = "<group>"; };
+		47EF2E6223A8CFD600EF08D1 /* HealthBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HealthBridge.m; sourceTree = "<group>"; };
+		47EF2E6423A8CFD600EF08D1 /* Extentions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
+		47EF2E6523A8CFD600EF08D1 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		47EF2E6623A8CFD600EF08D1 /* UtilBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UtilBridge.m; sourceTree = "<group>"; };
+		47EF2E6723A8CFD600EF08D1 /* NativeLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NativeLogger.h; sourceTree = "<group>"; };
+		47EF2E6823A8CFD600EF08D1 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		47EF2E6923A8CFD600EF08D1 /* LoggerBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoggerBridge.m; sourceTree = "<group>"; };
+		47EF2E6A23A8CFD600EF08D1 /* NativeLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NativeLogger.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +94,11 @@
 		47AAB736239E96350041E986 /* RNInputKit */ = {
 			isa = PBXGroup;
 			children = (
+				47EF2E5423A8CFD600EF08D1 /* Constants.swift */,
+				47EF2E5623A8CFD600EF08D1 /* EventHandler */,
+				47EF2E5B23A8CFD600EF08D1 /* Health */,
+				47EF2E5523A8CFD600EF08D1 /* InputKitConstants.swift */,
+				47EF2E6323A8CFD600EF08D1 /* Utils */,
 				47AAB73D239E97AB0041E986 /* RNInputKit.h */,
 				47AAB73E239E97B90041E986 /* RNInputKit.m */,
 				4743BBD923A799F400C838F1 /* SwiftModule.swift */,
@@ -62,6 +106,45 @@
 				4743BBDB23A79ABB00C838F1 /* SwiftModule.m */,
 			);
 			path = RNInputKit;
+			sourceTree = "<group>";
+		};
+		47EF2E5623A8CFD600EF08D1 /* EventHandler */ = {
+			isa = PBXGroup;
+			children = (
+				47EF2E5723A8CFD600EF08D1 /* EventHandlerBridge.m */,
+				47EF2E5823A8CFD600EF08D1 /* Event.swift */,
+				47EF2E5923A8CFD600EF08D1 /* ShortCodeGenerator.swift */,
+				47EF2E5A23A8CFD600EF08D1 /* EventHandlerBridge.swift */,
+			);
+			path = EventHandler;
+			sourceTree = "<group>";
+		};
+		47EF2E5B23A8CFD600EF08D1 /* Health */ = {
+			isa = PBXGroup;
+			children = (
+				47EF2E5C23A8CFD600EF08D1 /* HealthBridge.swift */,
+				47EF2E5D23A8CFD600EF08D1 /* HealthBridge+Helper.swift */,
+				47EF2E5E23A8CFD600EF08D1 /* HealthBridge+Query.swift */,
+				47EF2E5F23A8CFD600EF08D1 /* HealthUtils.swift */,
+				47EF2E6023A8CFD600EF08D1 /* HealthBridge+Background.swift */,
+				47EF2E6123A8CFD600EF08D1 /* HealthBridge+Realtime.swift */,
+				47EF2E6223A8CFD600EF08D1 /* HealthBridge.m */,
+			);
+			path = Health;
+			sourceTree = "<group>";
+		};
+		47EF2E6323A8CFD600EF08D1 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				47EF2E6423A8CFD600EF08D1 /* Extentions.swift */,
+				47EF2E6523A8CFD600EF08D1 /* Logger.swift */,
+				47EF2E6623A8CFD600EF08D1 /* UtilBridge.m */,
+				47EF2E6723A8CFD600EF08D1 /* NativeLogger.h */,
+				47EF2E6823A8CFD600EF08D1 /* Utils.swift */,
+				47EF2E6923A8CFD600EF08D1 /* LoggerBridge.m */,
+				47EF2E6A23A8CFD600EF08D1 /* NativeLogger.m */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		58B511D21A9E6C8500147676 = {
@@ -130,9 +213,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47EF2E7123A8CFD600EF08D1 /* HealthBridge.swift in Sources */,
+				47EF2E6D23A8CFD600EF08D1 /* EventHandlerBridge.m in Sources */,
 				47AAB73F239E97B90041E986 /* RNInputKit.m in Sources */,
 				4743BBDC23A79ABB00C838F1 /* SwiftModule.m in Sources */,
+				47EF2E7523A8CFD600EF08D1 /* HealthBridge+Background.swift in Sources */,
 				4743BBDA23A799F400C838F1 /* SwiftModule.swift in Sources */,
+				47EF2E6C23A8CFD600EF08D1 /* InputKitConstants.swift in Sources */,
+				47EF2E6F23A8CFD600EF08D1 /* ShortCodeGenerator.swift in Sources */,
+				47EF2E7823A8CFD600EF08D1 /* Extentions.swift in Sources */,
+				47EF2E7223A8CFD600EF08D1 /* HealthBridge+Helper.swift in Sources */,
+				47EF2E7023A8CFD600EF08D1 /* EventHandlerBridge.swift in Sources */,
+				47EF2E6E23A8CFD600EF08D1 /* Event.swift in Sources */,
+				47EF2E7A23A8CFD600EF08D1 /* UtilBridge.m in Sources */,
+				47EF2E6B23A8CFD600EF08D1 /* Constants.swift in Sources */,
+				47EF2E7D23A8CFD600EF08D1 /* NativeLogger.m in Sources */,
+				47EF2E7923A8CFD600EF08D1 /* Logger.swift in Sources */,
+				47EF2E7B23A8CFD600EF08D1 /* Utils.swift in Sources */,
+				47EF2E7723A8CFD600EF08D1 /* HealthBridge.m in Sources */,
+				47EF2E7323A8CFD600EF08D1 /* HealthBridge+Query.swift in Sources */,
+				47EF2E7623A8CFD600EF08D1 /* HealthBridge+Realtime.swift in Sources */,
+				47EF2E7C23A8CFD600EF08D1 /* LoggerBridge.m in Sources */,
+				47EF2E7423A8CFD600EF08D1 /* HealthUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
