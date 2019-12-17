@@ -1,22 +1,38 @@
-import { NativeModules } from 'react-native';
+//
+// Imports
+//
+import Health from './modules/bridge/InputKit/Health';
 
-const TestModule = NativeModules.RNInputKit;
-const SwiftModule = NativeModules.SwiftModule;
+import {
+    ActivitySample,
+    BloodPressureDataPoint,
+    HealthProvider,
+    IKDate,
+    IKPayloadType,
+    Interval,
+    QuantitySamples,
+    SampleType,
+    SleepAnalysisDataPoint,
+    StepCountDistributionDataPoint,
+    WeightDataPoint,
+} from './modules/bridge/InputKit/types';
+import { EventHandlerTaskService } from './modules/js_services';
 
-export function jsMethod() {
-    return "sample method (no native)";
-}
-
-export function objcMethod(){
-    return TestModule.test();
-}
-
-export function swiftMethod(){
-    return SwiftModule.swiftMethod()
-}
-
-export default {
-    jsMethod,
-    objcMethod,
-    swiftMethod,
-}
+//
+// Exports
+//
+export {
+    ActivitySample,
+    BloodPressureDataPoint,
+    EventHandlerTaskService,
+    Health,
+    HealthProvider,
+    IKDate,
+    IKPayloadType,
+    Interval,
+    QuantitySamples,
+    SampleType,
+    SleepAnalysisDataPoint,
+    StepCountDistributionDataPoint,
+    WeightDataPoint,
+};
