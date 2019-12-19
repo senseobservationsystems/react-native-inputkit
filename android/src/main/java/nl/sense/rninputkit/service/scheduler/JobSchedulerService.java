@@ -1,4 +1,4 @@
-package com.erasmus.service.scheduler;
+package nl.sense.rninputkit.service.scheduler;
 
 import android.app.job.JobInfo;
 import android.app.job.JobParameters;
@@ -9,8 +9,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import androidx.annotation.NonNull;
-import com.erasmus.helper.LoggerFileWriter;
-import com.erasmus.service.activity.detector.ActivityMonitoringService;
+import nl.sense.rninputkit.helper.LoggerFileWriter;
+import nl.sense.rninputkit.service.activity.detector.ActivityMonitoringService;
 
 import java.util.concurrent.TimeUnit;
 

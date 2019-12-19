@@ -49,6 +49,9 @@ android {
         targetSdkVersion safeExtGet('targetSdkVersion', DEFAULT_TARGET_SDK_VERSION)
         versionCode 1
         versionName "1.0"
+        //set to true to allow debugging mode, false otherwise
+        buildConfigField 'boolean', 'IS_NOTIFICATION_DEBUG_ENABLED', "false"
+        buildConfigField 'boolean', 'IS_DEBUG_MODE_ENABLED', "false"
     }
     lintOptions {
         abortOnError false
@@ -87,7 +90,7 @@ def configureReactNativePom(def pom) {
         name packageJson.title
         artifactId packageJson.name
         version = packageJson.version
-        group = "com.reactlibrary"
+        group = "nl.sense.rninputkit"
         description packageJson.description
         url packageJson.repository.baseUrl
 

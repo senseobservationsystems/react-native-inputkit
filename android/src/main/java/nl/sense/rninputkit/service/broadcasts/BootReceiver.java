@@ -6,7 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import nl.sense.rninputkit.service.activity.detector.ActivityState;
-import com.erasmus.service.scheduler.SchedulerCompat;
+import nl.sense.rninputkit.service.scheduler.SchedulerCompat;
 
 public class BootReceiver extends BroadcastReceiver {
     @Override

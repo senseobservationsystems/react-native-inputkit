@@ -4,8 +4,8 @@ import android.content.Context;
 import android.os.Environment;
 import android.util.Log;
 
-import com.erasmus.BuildConfig; // TODO IMPORTS
-import com.erasmus.R; // TODO IMPORTS
+import nl.sense.rninputkit.BuildConfig;
+import nl.sense.rninputkit.R;
 
 import java.io.File;
 import java.io.FileOutputStream;

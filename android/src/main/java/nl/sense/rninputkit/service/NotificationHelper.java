@@ -6,8 +6,8 @@ import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
-import com.erasmus.BuildConfig; // TODO IMPORTS
-import com.erasmus.R; // TODO IMPORTS
+import nl.sense.rninputkit.BuildConfig;
+import nl.sense.rninputkit.R; // TODO IMPORTS
 
 import nl.sense.rninputkit.helper.LoggerFileWriter;
 

@@ -9,7 +9,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 
-import com.erasmus.R; // TODO IMPORTS
+import nl.sense.rninputkit.R; // TODO IMPORTS
 import nl.sense.rninputkit.modules.health.event.Event;
 import nl.sense.rninputkit.service.activity.detector.Constants;
 import com.facebook.react.HeadlessJsTaskService; // TODO IMPORTS

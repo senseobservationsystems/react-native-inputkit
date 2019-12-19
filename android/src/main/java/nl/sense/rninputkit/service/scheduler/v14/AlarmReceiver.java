@@ -1,10 +1,10 @@
-package com.erasmus.service.scheduler.v14;
+package nl.sense.rninputkit.service.scheduler.v14;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import com.erasmus.service.EventHandlerTaskService;
-import com.erasmus.service.activity.detector.ActivityMonitoringService;
+import nl.sense.rninputkit.service.EventHandlerTaskService;
+import nl.sense.rninputkit.service.activity.detector.ActivityMonitoringService;
 
 public class AlarmReceiver extends BroadcastReceiver {
 

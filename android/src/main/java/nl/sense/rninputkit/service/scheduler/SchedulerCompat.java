@@ -1,10 +1,10 @@
-package com.erasmus.service.scheduler;
+package nl.sense.rninputkit.service.scheduler;
 
 import android.content.Context;
 import android.os.Build;
 import androidx.annotation.NonNull;
 
-import com.erasmus.service.scheduler.v14.AlarmCompat;
+import nl.sense.rninputkit.service.scheduler.v14.AlarmCompat;
 
 import java.lang.ref.WeakReference;
 

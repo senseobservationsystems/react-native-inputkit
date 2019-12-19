@@ -1,4 +1,4 @@
-package com.erasmus.service.scheduler;
+package nl.sense.rninputkit.service.scheduler;
 
 public interface IScheduler {
     void onCreate();

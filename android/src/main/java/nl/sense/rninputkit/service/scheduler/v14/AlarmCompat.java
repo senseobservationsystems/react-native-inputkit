@@ -1,4 +1,4 @@
-package com.erasmus.service.scheduler.v14;
+package nl.sense.rninputkit.service.scheduler.v14;
 
 
 import android.app.AlarmManager;
@@ -9,7 +9,7 @@ import android.content.IntentFilter;
 import android.os.Build;
 import androidx.annotation.NonNull;
 
-import com.erasmus.service.scheduler.IScheduler;
+import nl.sense.rninputkit.service.scheduler.IScheduler;
 
 import java.lang.ref.WeakReference;
 import java.util.Calendar;

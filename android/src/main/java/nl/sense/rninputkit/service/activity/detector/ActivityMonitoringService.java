@@ -11,10 +11,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 
-import com.erasmus.R; // TODO IMPORTS
+import nl.sense.rninputkit.R; // TODO IMPORTS
 import nl.sense.rninputkit.service.NotificationHelper;
 import nl.sense.rninputkit.service.ServiceNotificationCompat;
-import com.erasmus.service.scheduler.SchedulerCompat;
+import nl.sense.rninputkit.service.scheduler.SchedulerCompat;
 import com.google.android.gms.location.ActivityRecognitionClient;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;

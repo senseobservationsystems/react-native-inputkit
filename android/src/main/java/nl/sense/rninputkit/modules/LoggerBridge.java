@@ -3,7 +3,7 @@ package nl.sense.rninputkit.modules;
 
 import android.util.Log;
 
-import com.erasmus.BuildConfig; // TODO IMPORTS
+import nl.sense.rninputkit.BuildConfig; // TODO IMPORTS
 import nl.sense.rninputkit.helper.LoggerFileWriter;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
