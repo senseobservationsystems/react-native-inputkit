@@ -73,6 +73,9 @@ repositories {
 dependencies {
     //noinspection GradleDynamicVersion
     implementation 'com.facebook.react:react-native:+'  // From node_modules
+
+    // added by xavi
+    implementation "androidx.appcompat:appcompat:${safeExtGet('androidxVersion', '1.0.2')}"
 }
 
 def configureReactNativePom(def pom) {
