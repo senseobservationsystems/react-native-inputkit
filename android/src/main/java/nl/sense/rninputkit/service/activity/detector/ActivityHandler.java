@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import nl.sense_os.input_kit.InputKit;
+import nl.sense_os.input_kit.InputKit; // TODO IMPORTS
 import nl.sense_os.input_kit.entity.DateContent;
 import nl.sense_os.input_kit.entity.IKValue;
 import nl.sense_os.input_kit.entity.SensorDataPoint;
@@ -21,7 +21,7 @@ import nl.sense_os.input_kit.status.IKResultInfo;
 
 import static nl.sense.rninputkit.data.Constants.JS_SUPPORTED_EVENTS;
 import static nl.sense_os.input_kit.constant.SampleType.DISTANCE_WALKING_RUNNING;
-import static nl.sense_os.input_kit.constant.SampleType.STEP_COUNT;
+import static nl.sense_os.input_kit.constant.SampleType.STEP_COUNT; // TODO IMPORTS
 
 public class ActivityHandler {
     public static final String ACTIVITY_TYPE = "activityType";

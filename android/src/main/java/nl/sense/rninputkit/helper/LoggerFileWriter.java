@@ -4,8 +4,8 @@ import android.content.Context;
 import android.os.Environment;
 import android.util.Log;
 
-import com.erasmus.BuildConfig;
-import com.erasmus.R;
+import com.erasmus.BuildConfig; // TODO IMPORTS
+import com.erasmus.R; // TODO IMPORTS
 
 import java.io.File;
 import java.io.FileOutputStream;

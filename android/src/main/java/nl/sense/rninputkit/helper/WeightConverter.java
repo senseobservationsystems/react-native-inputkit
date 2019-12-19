@@ -8,7 +8,7 @@ import com.facebook.react.bridge.WritableMap;
 
 import java.util.List;
 
-import nl.sense_os.input_kit.entity.Weight;
+import nl.sense_os.input_kit.entity.Weight; // TODO IMPORTS
 
 /**
  * Created by xedi on 10/13/17.
