@@ -77,6 +77,7 @@ dependencies {
     // added by xavi
     implementation "androidx.appcompat:appcompat:${safeExtGet('androidxVersion', '1.0.2')}"
     implementation 'com.google.code.gson:gson:2.8.5'
+    implementation "com.google.android.gms:play-services-location:${safeExtGet('playServiceVersion', '16.0.0')}"
 }
 
 def configureReactNativePom(def pom) {
