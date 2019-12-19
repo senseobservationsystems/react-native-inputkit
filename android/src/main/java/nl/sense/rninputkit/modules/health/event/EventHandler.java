@@ -4,8 +4,8 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 import android.util.Log;
 
-import com.erasmus.modules.LoggerBridge;
-import com.erasmus.service.EventHandlerTaskService;
+import nl.sense.rninputkit.modules.LoggerBridge;
+import nl.sense.rninputkit.service.EventHandlerTaskService;
 import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.LifecycleEventListener;
 import com.facebook.react.bridge.Promise;

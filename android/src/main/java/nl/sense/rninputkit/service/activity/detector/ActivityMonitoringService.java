@@ -12,8 +12,8 @@ import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 
 import com.erasmus.R;
-import com.erasmus.service.NotificationHelper;
-import com.erasmus.service.ServiceNotificationCompat;
+import nl.sense.rninputkit.service.NotificationHelper;
+import nl.sense.rninputkit.service.ServiceNotificationCompat;
 import com.erasmus.service.scheduler.SchedulerCompat;
 import com.google.android.gms.location.ActivityRecognitionClient;
 import com.google.android.gms.tasks.OnFailureListener;

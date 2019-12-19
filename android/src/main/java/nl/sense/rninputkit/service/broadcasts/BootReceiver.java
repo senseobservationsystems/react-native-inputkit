@@ -5,7 +5,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
-import com.erasmus.service.activity.detector.ActivityState;
+import nl.sense.rninputkit.service.activity.detector.ActivityState;
 import com.erasmus.service.scheduler.SchedulerCompat;
 
 public class BootReceiver extends BroadcastReceiver {

@@ -10,8 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 
 import com.erasmus.R;
-import com.erasmus.modules.health.event.Event;
-import com.erasmus.service.activity.detector.Constants;
+import nl.sense.rninputkit.modules.health.event.Event;
+import nl.sense.rninputkit.service.activity.detector.Constants;
 import com.facebook.react.HeadlessJsTaskService;
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.WritableMap;

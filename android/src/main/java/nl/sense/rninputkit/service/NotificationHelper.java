@@ -8,7 +8,7 @@ import androidx.core.app.NotificationManagerCompat;
 
 import com.erasmus.BuildConfig;
 import com.erasmus.R;
-import com.erasmus.helper.LoggerFileWriter;
+import nl.sense.rninputkit.helper.LoggerFileWriter;
 
 public class NotificationHelper {
 

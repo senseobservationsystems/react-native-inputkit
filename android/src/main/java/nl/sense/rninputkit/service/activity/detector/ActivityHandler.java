@@ -5,8 +5,8 @@ import android.content.Intent;
 import androidx.annotation.NonNull;
 import android.util.Pair;
 
-import com.erasmus.data.Constants;
-import com.erasmus.modules.health.event.EventHandler;
+import nl.sense.rninputkit.data.Constants;
+import nl.sense.rninputkit.modules.health.event.EventHandler;
 import com.facebook.react.bridge.Callback;
 
 import java.util.ArrayList;
@@ -19,7 +19,7 @@ import nl.sense_os.input_kit.entity.IKValue;
 import nl.sense_os.input_kit.entity.SensorDataPoint;
 import nl.sense_os.input_kit.status.IKResultInfo;
 
-import static com.erasmus.data.Constants.JS_SUPPORTED_EVENTS;
+import static nl.sense.rninputkit.data.Constants.JS_SUPPORTED_EVENTS;
 import static nl.sense_os.input_kit.constant.SampleType.DISTANCE_WALKING_RUNNING;
 import static nl.sense_os.input_kit.constant.SampleType.STEP_COUNT;
 

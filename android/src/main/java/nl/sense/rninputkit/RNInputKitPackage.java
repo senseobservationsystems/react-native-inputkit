@@ -1,8 +1,8 @@
 package nl.sense.rninputkit;
 
-import com.erasmus.modules.HealthBridge;
-import com.erasmus.modules.LoggerBridge;
-import com.erasmus.modules.health.event.EventHandler;
+import nl.sense.rninputkit.modules.HealthBridge;
+import nl.sense.rninputkit.modules.LoggerBridge;
+import nl.sense.rninputkit.modules.health.event.EventHandler;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.JavaScriptModule;
 import com.facebook.react.bridge.NativeModule;

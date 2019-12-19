@@ -3,7 +3,7 @@ package nl.sense.rninputkit.modules.health.event;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 
-import com.erasmus.helper.ValueConverter;
+import nl.sense.rninputkit.helper.ValueConverter;
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.WritableMap;

@@ -8,14 +8,14 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.util.Pair;
 
-import com.erasmus.data.Constants;
-import com.erasmus.data.ProviderName;
-import com.erasmus.helper.BloodPressureConverter;
-import com.erasmus.helper.ValueConverter;
-import com.erasmus.helper.WeightConverter;
-import com.erasmus.modules.health.HealthPermissionPromise;
-import com.erasmus.modules.health.event.EventHandler;
-import com.erasmus.service.activity.detector.ActivityMonitoringService;
+import nl.sense.rninputkit.data.Constants;
+import nl.sense.rninputkit.data.ProviderName;
+import nl.sense.rninputkit.helper.BloodPressureConverter;
+import nl.sense.rninputkit.helper.ValueConverter;
+import nl.sense.rninputkit.helper.WeightConverter;
+import nl.sense.rninputkit.modules.health.HealthPermissionPromise;
+import nl.sense.rninputkit.modules.health.event.EventHandler;
+import nl.sense.rninputkit.service.activity.detector.ActivityMonitoringService;
 import com.facebook.react.bridge.ActivityEventListener;
 import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.LifecycleEventListener;
@@ -46,7 +46,7 @@ import nl.sense_os.input_kit.helper.AppHelper;
 import nl.sense_os.input_kit.status.IKProviderInfo;
 import nl.sense_os.input_kit.status.IKResultInfo;
 
-import static com.erasmus.data.Constants.JS_SUPPORTED_EVENTS;
+import static nl.sense.rninputkit.data.Constants.JS_SUPPORTED_EVENTS;
 import static nl.sense_os.input_kit.constant.IKStatus.Code.IK_NOT_CONNECTED;
 
 /**
