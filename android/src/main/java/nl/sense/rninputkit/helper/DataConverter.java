@@ -5,7 +5,7 @@ import androidx.annotation.Nullable;
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.WritableMap;
 
-import nl.sense_os.input_kit.entity.DateContent; // TODO IMPORTS
+import nl.sense.rninputkit.inputkit.entity.DateContent; // TODO IMPORTS
 
 /**
  * Created by xedi on 10/13/17.

@@ -8,7 +8,7 @@ import com.facebook.react.bridge.WritableMap;
 
 import java.util.List;
 
-import nl.sense_os.input_kit.entity.BloodPressure; // TODO IMPORTS
+import nl.sense.rninputkit.inputkit.entity.BloodPressure; // TODO IMPORTS
 
 /**
  * Created by xedi on 10/16/17.

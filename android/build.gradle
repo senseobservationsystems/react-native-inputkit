@@ -20,7 +20,7 @@ def safeExtGet(prop, fallback) {
 }
 
 apply plugin: 'com.android.library'
-apply plugin: 'maven'
+// apply plugin: 'maven'
 
 buildscript {
     // The Android Gradle plugin is only required when opening the android folder stand-alone.
@@ -81,6 +81,11 @@ dependencies {
     implementation "androidx.appcompat:appcompat:${safeExtGet('androidxVersion', '1.0.2')}"
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation "com.google.android.gms:play-services-location:${safeExtGet('playServiceVersion', '16.0.0')}"
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation "com.google.android.gms:play-services-fitness:${safeExtGet('fitnessApiVersion', '16.0.1')}"
+    implementation "com.google.android.gms:play-services-awareness:${safeExtGet('awarenessApiVersion', '16.0.0')}"
+    implementation "com.google.android.gms:play-services-auth:${safeExtGet('authApiVersion', '16.0.1')}"
 }
 
 def configureReactNativePom(def pom) {

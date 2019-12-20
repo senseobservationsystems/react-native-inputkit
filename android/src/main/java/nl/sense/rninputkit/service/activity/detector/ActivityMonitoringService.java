@@ -23,7 +23,7 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
-import nl.sense_os.input_kit.constant.SampleType.SampleName; // TODO IMPORTS
+import nl.sense.rninputkit.inputkit.constant.SampleType.SampleName; // TODO IMPORTS
 
 import static android.os.Build.VERSION.SDK_INT;
 
