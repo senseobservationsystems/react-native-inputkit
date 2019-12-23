@@ -59,7 +59,6 @@ const App = () => {
 
     return (
         <Fragment>
-            // eslint-disable-next-line jsx-quotes
             <StatusBar barStyle='dark-content' />
             <SafeAreaView>
                 <ScrollView contentInsetAdjustmentBehavior='automatic' style={styles.scrollView}>
