@@ -1,0 +1,5 @@
+node_modules
+lib/
+example/android/app/build
+example/ios/Pods
+example/__tests__

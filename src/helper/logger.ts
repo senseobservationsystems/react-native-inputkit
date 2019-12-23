@@ -8,44 +8,39 @@ function nativeLogger(message: string) {
     }
 }
 
-let logger: {
+const logger: {
     error: (error: any, stack?: any) => void;
     warn: (...anything: any[]) => void;
     debug: (...anything: any[]) => void;
     native: (...anything: any[]) => void;
+} = {
+    error: console.error,
+    warn: console.warn,
+    debug: console.log,
+    native: nativeLogger,
 };
 
 // if (__DEV__) {
-    // tslint:disable-next-line:no-var-requires
-    // TODO: we shouldn't be using reactotron in react-native-inputkit.
-    // const Reactotron = require('reactotron-react-native').default;
-    // logger = {
-    //     error: Reactotron.error,
-    //     warn: Reactotron.warn,
-    //     debug: Reactotron.log,
-    //     native: nativeLogger,
-    // };
+// tslint:disable-next-line:no-var-requires
+// TODO: we shouldn't be using reactotron in react-native-inputkit.
+// const Reactotron = require('reactotron-react-native').default;
+// logger = {
+//     error: Reactotron.error,
+//     warn: Reactotron.warn,
+//     debug: Reactotron.log,
+//     native: nativeLogger,
+// };
 // } else {
-    // logger = {
-    //     // tslint:disable-next-line:no-console
-    //     error: console.error,
-    //     // tslint:disable-next-line:no-console
-    //     warn: console.warn,
-    //     // tslint:disable-next-line:no-console
-    //     debug: console.log,
-    //     // tslint:disable-next-line:no-console
-    //     native: nativeLogger,
-    // };
+// logger = {
+//     // tslint:disable-next-line:no-console
+//     error: console.error,
+//     // tslint:disable-next-line:no-console
+//     warn: console.warn,
+//     // tslint:disable-next-line:no-console
+//     debug: console.log,
+//     // tslint:disable-next-line:no-console
+//     native: nativeLogger,
+// };
 // }
-logger = {
-    // tslint:disable-next-line:no-console
-    error: console.error,
-    // tslint:disable-next-line:no-console
-    warn: console.warn,
-    // tslint:disable-next-line:no-console
-    debug: console.log,
-    // tslint:disable-next-line:no-console
-    native: nativeLogger,
-};
 
 export default logger;
