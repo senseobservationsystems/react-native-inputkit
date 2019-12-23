@@ -1,0 +1,4 @@
+*.md
+*.yml
+resources/messages/*.json
+tsconfig.json
