@@ -2,7 +2,7 @@
     "name": "react-native-inputkit",
     "title": "React Native Input Kit",
     "version": "0.0.1",
-    "description": "TODO",
+    "description": "Module to access GoogleFit or Healthkit data",
     "react-native": "src/index.ts",
     "types": "lib/typescript/index.d.ts",
     "main": "lib/commonjs/index.js",
@@ -23,18 +23,20 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/github_account/react-native-inputkit.git",
-        "baseUrl": "https://github.com/github_account/react-native-inputkit"
+        "url": "https://github.com/senseobservationsystems/react-native-inputkit.git"
     },
+    "homepage": "https://github.com/senseobservationsystems/react-native-inputkit",
     "keywords": [
-        "react-native"
+        "react-native",
+        "inputkit",
+        "healthkit",
+        "googlefit"
     ],
     "author": {
-        "name": "Your Name",
-        "email": "yourname@email.com"
+        "name": "Sense Health",
+        "email": "xavier@sense-os.nl"
     },
     "license": "MIT",
-    "licenseFilename": "LICENSE",
     "readmeFilename": "README.md",
     "devDependencies": {
         "@react-native-community/bob": "^0.7.0",
