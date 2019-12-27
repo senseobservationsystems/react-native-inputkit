@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">rninputkit</string>
+    <string name="name_of_syncing_steps_channel_desc" translatable="false">Actively syncing steps are allowed</string>
+    <string name="title_of_syncing_steps" translatable="false">NiceDay is actively syncing steps.</string>
+</resources>

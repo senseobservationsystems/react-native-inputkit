@@ -31,23 +31,23 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import nl.sense_os.input_kit.HealthProvider; // TODO IMPORTS
-import nl.sense_os.input_kit.HealthProvider.ProviderType;
-import nl.sense_os.input_kit.InputKit;
-import nl.sense_os.input_kit.constant.IKStatus;
-import nl.sense_os.input_kit.constant.SampleType;
-import nl.sense_os.input_kit.entity.BloodPressure;
-import nl.sense_os.input_kit.entity.IKValue;
-import nl.sense_os.input_kit.entity.SensorDataPoint;
-import nl.sense_os.input_kit.entity.StepContent;
-import nl.sense_os.input_kit.entity.Weight;
-import nl.sense_os.input_kit.googlefit.GoogleFitHealthProvider;
-import nl.sense_os.input_kit.helper.AppHelper;
-import nl.sense_os.input_kit.status.IKProviderInfo;
-import nl.sense_os.input_kit.status.IKResultInfo;
+import nl.sense.rninputkit.inputkit.HealthProvider; // TODO IMPORTS
+import nl.sense.rninputkit.inputkit.HealthProvider.ProviderType;
+import nl.sense.rninputkit.inputkit.InputKit;
+import nl.sense.rninputkit.inputkit.constant.IKStatus;
+import nl.sense.rninputkit.inputkit.constant.SampleType;
+import nl.sense.rninputkit.inputkit.entity.BloodPressure;
+import nl.sense.rninputkit.inputkit.entity.IKValue;
+import nl.sense.rninputkit.inputkit.entity.SensorDataPoint;
+import nl.sense.rninputkit.inputkit.entity.StepContent;
+import nl.sense.rninputkit.inputkit.entity.Weight;
+import nl.sense.rninputkit.inputkit.googlefit.GoogleFitHealthProvider;
+import nl.sense.rninputkit.inputkit.helper.AppHelper;
+import nl.sense.rninputkit.inputkit.status.IKProviderInfo;
+import nl.sense.rninputkit.inputkit.status.IKResultInfo;
 
 import static nl.sense.rninputkit.data.Constants.JS_SUPPORTED_EVENTS;
-import static nl.sense_os.input_kit.constant.IKStatus.Code.IK_NOT_CONNECTED;
+import static nl.sense.rninputkit.inputkit.constant.IKStatus.Code.IK_NOT_CONNECTED;
 
 /**
  * Created by panjiyudasetya on 5/30/17.
@@ -101,7 +101,7 @@ public class HealthBridge extends ReactContextBaseJavaModule implements Activity
 
     /**
      * Start monitoring health sensors.
-     * @param typeString    Sensor type should be one of these {@link nl.sense_os.input_kit.constant.SampleType.SampleName} sensor
+     * @param typeString    Sensor type should be one of these {@link nl.sense.rninputkit.inputkit.constant.SampleType.SampleName} sensor
      * @param promise contains an information of subscribing health sensor.
      */
     @ReactMethod
@@ -123,7 +123,7 @@ public class HealthBridge extends ReactContextBaseJavaModule implements Activity
 
     /**
      * Stop monitoring health sensors.
-     * @param typeString    Sensor type should be one of these {@link nl.sense_os.input_kit.constant.SampleType.SampleName} sensor
+     * @param typeString    Sensor type should be one of these {@link nl.sense.rninputkit.inputkit.constant.SampleType.SampleName} sensor
      * @param promise contains an information of unsubscribing health sensor.
      */
     @ReactMethod

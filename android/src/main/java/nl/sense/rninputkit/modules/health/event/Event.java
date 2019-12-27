@@ -12,7 +12,7 @@ import com.google.gson.JsonObject;
 
 import java.util.List;
 
-import nl.sense_os.input_kit.entity.IKValue;
+import nl.sense.rninputkit.inputkit.entity.IKValue;
 
 /**
  * Created by panjiyudasetya on 7/21/17.

@@ -11,8 +11,8 @@ import com.google.gson.GsonBuilder;
 
 import java.util.List;
 
-import nl.sense_os.input_kit.entity.DateContent; // TODO IMPORTS
-import nl.sense_os.input_kit.entity.IKValue; // TODO IMPORTS
+import nl.sense.rninputkit.inputkit.entity.DateContent; // TODO IMPORTS
+import nl.sense.rninputkit.inputkit.entity.IKValue; // TODO IMPORTS
 
 /**
  * Created by panjiyudasetya on 10/23/17.

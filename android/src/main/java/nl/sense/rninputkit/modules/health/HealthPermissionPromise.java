@@ -4,7 +4,7 @@ import androidx.annotation.NonNull;
 
 import com.facebook.react.bridge.Promise;
 
-import nl.sense_os.input_kit.status.IKProviderInfo;
+import nl.sense.rninputkit.inputkit.status.IKProviderInfo;
 
 /**
  * Created by panjiyudasetya on 11/20/17.

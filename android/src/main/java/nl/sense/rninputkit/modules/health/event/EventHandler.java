@@ -25,9 +25,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import nl.sense_os.input_kit.constant.IKStatus;
-import nl.sense_os.input_kit.entity.IKValue;
-import nl.sense_os.input_kit.entity.SensorDataPoint;
+import nl.sense.rninputkit.inputkit.constant.IKStatus;
+import nl.sense.rninputkit.inputkit.entity.IKValue;
+import nl.sense.rninputkit.inputkit.entity.SensorDataPoint;
 
 /**
  * Created by panjiyudasetya on 7/24/17.
