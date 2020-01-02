@@ -49,6 +49,9 @@ android {
         targetSdkVersion safeExtGet('targetSdkVersion', DEFAULT_TARGET_SDK_VERSION)
         versionCode 1
         versionName "1.0"
+        //set to true to allow debugging mode, false otherwise
+        buildConfigField 'boolean', 'IS_NOTIFICATION_DEBUG_ENABLED', "false"
+        buildConfigField 'boolean', 'IS_DEBUG_MODE_ENABLED', "false"
     }
     lintOptions {
         abortOnError false
@@ -73,6 +76,16 @@ repositories {
 dependencies {
     //noinspection GradleDynamicVersion
     implementation 'com.facebook.react:react-native:+'  // From node_modules
+
+    // added by xavi
+    implementation "androidx.appcompat:appcompat:${safeExtGet('androidxVersion', '1.0.2')}"
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation "com.google.android.gms:play-services-location:${safeExtGet('playServiceVersion', '16.0.0')}"
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation "com.google.android.gms:play-services-fitness:${safeExtGet('fitnessApiVersion', '16.0.1')}"
+    implementation "com.google.android.gms:play-services-awareness:${safeExtGet('awarenessApiVersion', '16.0.0')}"
+    implementation "com.google.android.gms:play-services-auth:${safeExtGet('authApiVersion', '16.0.1')}"
 }
 
 def configureReactNativePom(def pom) {
@@ -82,7 +95,7 @@ def configureReactNativePom(def pom) {
         name packageJson.title
         artifactId packageJson.name
         version = packageJson.version
-        group = "com.reactlibrary"
+        group = "nl.sense.rninputkit"
         description packageJson.description
         url packageJson.repository.baseUrl
 
