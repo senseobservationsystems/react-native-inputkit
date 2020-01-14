@@ -11,3 +11,4 @@
 #import <React/RCTConvert.h>
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTEventEmitter.h>
+#import "NativeLogger.h"
