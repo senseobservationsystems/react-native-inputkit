@@ -19,7 +19,7 @@ import nl.sense.rninputkit.inputkit.entity.IKValue;
 import nl.sense.rninputkit.inputkit.entity.SensorDataPoint;
 import nl.sense.rninputkit.inputkit.entity.StepContent;
 import nl.sense.rninputkit.inputkit.entity.Weight;
-import nl.sense.rninputkit.inputkit.shealth.SamsungHealthProvider;
+// import nl.sense.rninputkit.inputkit.shealth.SamsungHealthProvider;
 import nl.sense.rninputkit.inputkit.status.IKResultInfo;
 import nl.sense.rninputkit.inputkit.status.IKProviderInfo;
 import nl.sense.rninputkit.inputkit.googlefit.GoogleFitHealthProvider;
@@ -82,7 +82,8 @@ public class InputKit implements IReleasableHostProvider {
 
     private InputKit(@NonNull Context context) {
         mGoogleFitHealthProvider = new GoogleFitHealthProvider(context, this);
-        mSamsungHealthProvider = new SamsungHealthProvider(context);
+        // TODO: Enable this only when we want to integrate with Samsung Health
+        // mSamsungHealthProvider = new SamsungHealthProvider(context);
 
         // By default it will use Google Fit Health provider
         mCurrentHealthProvider = mGoogleFitHealthProvider;
@@ -120,8 +121,9 @@ public class InputKit implements IReleasableHostProvider {
             case GOOGLE_FIT: mCurrentHealthProvider = mGoogleFitHealthProvider;
                 break;
             case SAMSUNG_HEALTH:
-                mCurrentHealthProvider = mSamsungHealthProvider;
-                break;
+                // TODO: Enable this only when we want to integrate with Samsung Health
+                // mCurrentHealthProvider = mSamsungHealthProvider;
+                // break;
             case GARMIN_SDK:
             default:
                 mCurrentHealthProvider = mGoogleFitHealthProvider;
