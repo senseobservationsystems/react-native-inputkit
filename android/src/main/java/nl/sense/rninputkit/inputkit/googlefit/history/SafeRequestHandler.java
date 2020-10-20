@@ -1,4 +1,4 @@
-package nl.sense_os.input_kit.googlefit.history;
+package nl.sense.rninputkit.inputkit.googlefit.history;
 
 import androidx.annotation.NonNull;
 
@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 
-import nl.sense_os.input_kit.entity.TimeInterval;
+import nl.sense.rninputkit.inputkit.entity.TimeInterval;
 
 public class SafeRequestHandler {
     /**
