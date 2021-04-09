@@ -217,7 +217,7 @@ public class SHealthWrapper {
 
         mSleepReader.readSleep(startTime, endTime, callback);
     }
-
+    //TODO delete this
     public void getBloodPressure(long startTime, long endTime,
                                  @NonNull InputKit.Result<List<BloodPressure>> callback) {
         if (!isPermissionAcquired(mPermissionSet.getBloodPressurePermissionSet())) {

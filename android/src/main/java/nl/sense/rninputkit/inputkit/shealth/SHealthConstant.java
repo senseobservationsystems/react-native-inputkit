@@ -28,6 +28,7 @@ public class SHealthConstant {
     public static final String AWAKE = "awake";
     public static final String IN_BED = "inBed";
 
+    //TODO currently we only use step_count data type.
     public static final List<String> SUPPORTED_DATA_TYPES =
             new ArrayList<>(Arrays.asList("step_count",
                     "step_history",

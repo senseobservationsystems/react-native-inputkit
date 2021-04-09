@@ -12,6 +12,7 @@ import nl.sense.rninputkit.inputkit.entity.BloodPressure; // TODO IMPORTS
 
 /**
  * Created by xedi on 10/16/17.
+ * TODO delete later
  */
 
 public class BloodPressureConverter extends DataConverter {

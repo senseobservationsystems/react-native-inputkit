@@ -147,6 +147,7 @@ public class HealthBridge extends ReactContextBaseJavaModule implements Activity
      * Check Input Kit availability.
      * @param promise contains an information whether successfully connect to Input Kit or not.
      */
+    @Deprecated
     @ReactMethod
     @SuppressWarnings("unused")//Used by React Native application
     public void isAvailable(final Promise promise) {
@@ -197,6 +198,7 @@ public class HealthBridge extends ReactContextBaseJavaModule implements Activity
      * @param promise resolved whenever permission has been authorised
      *                rejected if it hasn;t
      */
+    @Deprecated
     @ReactMethod
     @SuppressWarnings("unused")//Used by React Native application
     public void isPermissionsAuthorised(ReadableArray permissions, final Promise promise) {
@@ -282,6 +284,7 @@ public class HealthBridge extends ReactContextBaseJavaModule implements Activity
      * @param promise   containing number of total distance in meters.
      * @param limit     distance sample set limit
      */
+    @Deprecated
     @ReactMethod
     @SuppressWarnings("unused")//Used by React Native application
     public void getDistanceSamples(final Double startTime,
@@ -376,7 +379,7 @@ public class HealthBridge extends ReactContextBaseJavaModule implements Activity
                     }
                 });
     }
-
+    @Deprecated
     @ReactMethod
     @SuppressWarnings("unused")//Used by React Native application
     public void getSleepAnalysisSamples(final Double startTime,
@@ -398,7 +401,7 @@ public class HealthBridge extends ReactContextBaseJavaModule implements Activity
                 }
         );
     }
-
+    @Deprecated
     @ReactMethod
     @SuppressWarnings("unused")//Used by React Native application
     public void getWeightData(final Double startTime,
@@ -420,7 +423,8 @@ public class HealthBridge extends ReactContextBaseJavaModule implements Activity
                 }
         );
     }
-
+    //TODO delete later
+    @Deprecated //this is restricted API
     @ReactMethod
     @SuppressWarnings("unused")//Used by React Native application
     public void getBloodPressure(final Double startTime,
@@ -453,6 +457,7 @@ public class HealthBridge extends ReactContextBaseJavaModule implements Activity
      * @param promise    Containing an information of request code and code message whether
      *                   tracking action successfully or not
      */
+    @Deprecated
     @ReactMethod
     @SuppressWarnings("unused")//Used by React Native application
     public void startTracking(final String sampleType,
@@ -503,6 +508,7 @@ public class HealthBridge extends ReactContextBaseJavaModule implements Activity
      * @param promise    Containing an information of request code and code message whether
      *                   tracking action successfully or not
      */
+    @Deprecated
     @ReactMethod
     @SuppressWarnings("unused")//Used by React Native application
     public void stopTracking(final String sampleType,
@@ -533,6 +539,7 @@ public class HealthBridge extends ReactContextBaseJavaModule implements Activity
      * @param promise    Containing an information of request code and code message whether
      *                   tracking action successfully or not
      */
+    @Deprecated
     @ReactMethod
     @SuppressWarnings("unused")//Used by React Native application
     public void stopTrackingAll(final Promise promise) {

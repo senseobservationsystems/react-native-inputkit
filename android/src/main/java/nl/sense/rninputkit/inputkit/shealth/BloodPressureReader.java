@@ -18,6 +18,7 @@ import nl.sense.rninputkit.inputkit.status.IKResultInfo;
 
 /**
  * Created by xedi on 10/9/17.
+ * TODO delete this class
  */
 
 public class BloodPressureReader {

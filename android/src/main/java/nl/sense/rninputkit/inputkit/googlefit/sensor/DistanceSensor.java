@@ -22,14 +22,16 @@ public class DistanceSensor extends SensorApi {
     void setOptions(int samplingRate,
                     @NonNull TimeUnit samplingTimeUnit,
                     @NonNull OnDataPointListener listener) {
-
-        SensorOptions options = new SensorOptions
+        //TODO
+        //DataType.TYPE_DISTANCE_CUMULATIVE doesn't exists anymore.
+        //DistanceSensor is not used anywhere, can we delete this?
+        /*SensorOptions options = new SensorOptions
                 .Builder()
                 .dataType(DataType.TYPE_DISTANCE_CUMULATIVE, DataSource.TYPE_DERIVED)
                 .samplingRate(samplingRate)
                 .samplingTimeUnit(samplingTimeUnit)
                 .sensorListener(listener)
                 .build();
-        setOptions(options);
+        setOptions(options);*/
     }
 }
