@@ -456,58 +456,6 @@ public class GoogleFitHealthProvider extends HealthProvider {
         }, sensorType);
     }
 
-    @Override
-    public void stopTrackingAll(@NonNull final SensorListener<SensorDataPoint> listener) {
-        final Context context = getContext();
-        if (isInvalidContext(context, listener, false)) return;
-        if (!isAvailable()) {
-            listener.onUnsubscribe(INPUT_KIT_NOT_CONNECTED);
-            return;
-        }
-
-        assert context != null;
-        callWithValidToken(new AccessTokenListener() {
-            @Override
-            public void onSuccess() {
-                mSensorTracking.stopTrackingAll(new SensorListener<SensorDataPoint>() {
-                    @Override
-                    public void onSubscribe(@NonNull IKResultInfo info) {
-                        if (info.getResultCode() == IKStatus.Code.VALID_REQUEST) {
-                            HealthTrackerState.saveAll(
-                                    context,
-                                    Constant.TRACKED_HEALTH_SENSORS,
-                                    true
-                            );
-                        }
-                        listener.onSubscribe(info);
-                    }
-
-                    @Override
-                    public void onReceive(@NonNull SensorDataPoint data) {
-                        listener.onReceive(data);
-                    }
-
-                    @Override
-                    public void onUnsubscribe(@NonNull IKResultInfo info) {
-                        if (info.getResultCode() == IKStatus.Code.VALID_REQUEST) {
-                            HealthTrackerState.saveAll(
-                                    context,
-                                    Constant.TRACKED_HEALTH_SENSORS,
-                                    false
-                            );
-                        }
-                        listener.onSubscribe(info);
-                    }
-                });
-            }
-
-            @Override
-            public void onFailure(Exception e) {
-                listener.onUnsubscribe(new IKResultInfo(IKStatus.Code.INVALID_REQUEST,
-                        e.getMessage()));
-            }
-        }, SampleType.STEP_COUNT, SampleType.DISTANCE_WALKING_RUNNING);
-    }
 
     /**
      * Helper function to check whether sensor type is available or not.

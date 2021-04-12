@@ -270,10 +270,4 @@ public abstract class HealthProvider {
     public abstract void stopTracking(@NonNull String sensorType,
                                       @NonNull SensorListener<SensorDataPoint> listener);
 
-    /**
-     * Stop all tracking specific sensor.
-     *
-     * @param listener {@link SensorListener} sensor listener
-     */
-    public abstract void stopTrackingAll(@NonNull SensorListener<SensorDataPoint> listener);
 }

@@ -251,17 +251,6 @@ public class InputKit implements IReleasableHostProvider {
                              @NonNull SensorListener<SensorDataPoint> listener) {
         mCurrentHealthProvider.stopTracking(sensorType, listener);
     }
-
-    /**
-     * Stop all tracking specific sensor.
-     *
-     * @param listener {@link SensorListener} sensor listener
-     */
-    @SuppressWarnings("unused")//This is a public API
-    public void stopTrackingAll(@NonNull SensorListener<SensorDataPoint> listener) {
-        mCurrentHealthProvider.stopTrackingAll(listener);
-    }
-
     @Override
     public void release() {
         sInputKit = null;

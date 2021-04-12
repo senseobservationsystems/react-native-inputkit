@@ -3,12 +3,18 @@ package nl.sense.rninputkit.modules;
 
 import android.app.Activity;
 import android.content.Intent;
+import androidx.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.Pair;
 
-import androidx.annotation.NonNull;
-
+import nl.sense.rninputkit.data.Constants;
+import nl.sense.rninputkit.data.ProviderName;
+import nl.sense.rninputkit.helper.ValueConverter;
+import nl.sense.rninputkit.helper.WeightConverter;
+import nl.sense.rninputkit.modules.health.HealthPermissionPromise;
+import nl.sense.rninputkit.modules.health.event.EventHandler;
+import nl.sense.rninputkit.service.activity.detector.ActivityMonitoringService;
 import com.facebook.react.bridge.ActivityEventListener;
 import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.LifecycleEventListener;
@@ -17,30 +23,26 @@ import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableArray;
+import com.facebook.react.bridge.WritableArray;
 import com.facebook.react.bridge.WritableMap;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import nl.sense.rninputkit.data.Constants;
-import nl.sense.rninputkit.data.ProviderName;
-import nl.sense.rninputkit.helper.ValueConverter;
-import nl.sense.rninputkit.helper.WeightConverter;
-import nl.sense.rninputkit.inputkit.HealthProvider;
+import nl.sense.rninputkit.inputkit.HealthProvider; // TODO IMPORTS
 import nl.sense.rninputkit.inputkit.HealthProvider.ProviderType;
 import nl.sense.rninputkit.inputkit.InputKit;
 import nl.sense.rninputkit.inputkit.constant.IKStatus;
 import nl.sense.rninputkit.inputkit.constant.SampleType;
+import nl.sense.rninputkit.inputkit.entity.IKValue;
 import nl.sense.rninputkit.inputkit.entity.SensorDataPoint;
 import nl.sense.rninputkit.inputkit.entity.StepContent;
+import nl.sense.rninputkit.inputkit.entity.Weight;
 import nl.sense.rninputkit.inputkit.googlefit.GoogleFitHealthProvider;
 import nl.sense.rninputkit.inputkit.helper.AppHelper;
 import nl.sense.rninputkit.inputkit.status.IKProviderInfo;
 import nl.sense.rninputkit.inputkit.status.IKResultInfo;
-import nl.sense.rninputkit.modules.health.HealthPermissionPromise;
-import nl.sense.rninputkit.modules.health.event.EventHandler;
-import nl.sense.rninputkit.service.activity.detector.ActivityMonitoringService;
 
 import static nl.sense.rninputkit.data.Constants.JS_SUPPORTED_EVENTS;
 import static nl.sense.rninputkit.inputkit.constant.IKStatus.Code.IK_NOT_CONNECTED;
@@ -57,7 +59,6 @@ public class HealthBridge extends ReactContextBaseJavaModule implements Activity
     private ReactApplicationContext mReactContext;
     private InputKit mInputKit;
     private List<HealthPermissionPromise> mRequestHealthPromises;
-    private WeightConverter mWeightConverter;
     private ProviderType mActiveProvider;
 
     @SuppressWarnings("unused") // Used by React Native
@@ -67,7 +68,6 @@ public class HealthBridge extends ReactContextBaseJavaModule implements Activity
         mReactContext.addLifecycleEventListener(this);
         mReactContext.addActivityEventListener(this);
 
-        mWeightConverter = new WeightConverter();
 
         mRequestHealthPromises = new ArrayList<>();
         mActiveProvider = ProviderType.GOOGLE_FIT;
@@ -306,6 +306,7 @@ public class HealthBridge extends ReactContextBaseJavaModule implements Activity
                     }
                 });
     }
+
     /**
      * Start tracking specific sensor.
      *
@@ -390,35 +391,6 @@ public class HealthBridge extends ReactContextBaseJavaModule implements Activity
                     }
                 });
     }
-
-    /**
-     * Stop all tracking sensors.
-     *
-     * @param promise    Containing an information of request code and code message whether
-     *                   tracking action successfully or not
-     */
-    @Deprecated
-    @ReactMethod
-    @SuppressWarnings("unused")//Used by React Native application
-    public void stopTrackingAll(final Promise promise) {
-        mInputKit.stopTrackingAll(new HealthProvider.SensorListener<SensorDataPoint>() {
-            @Override
-            public void onSubscribe(@NonNull IKResultInfo info) { }
-
-            @Override
-            public void onReceive(@NonNull SensorDataPoint data) { }
-
-            @Override
-            public void onUnsubscribe(@NonNull IKResultInfo info) {
-                if (info.getResultCode() == IKStatus.Code.VALID_REQUEST) {
-                    promise.resolve(info.getMessage());
-                    return;
-                }
-                promise.reject(String.valueOf(info.getResultCode()), info.getMessage());
-            }
-        });
-    }
-
     @Override
     public void onHostResume() {
         // Do nothing here, as long as host module didn't destroyed,
