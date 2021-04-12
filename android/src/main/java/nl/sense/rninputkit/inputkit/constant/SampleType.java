@@ -20,15 +20,13 @@ public class SampleType {
             SLEEP,
             STEP_COUNT,
             DISTANCE_WALKING_RUNNING,
-            WEIGHT,
-            BLOOD_PRESSURE
+            WEIGHT
     })
     public @interface SampleName { }
     public static final String SLEEP = "sleep";
     public static final String STEP_COUNT = "stepCount";
     public static final String DISTANCE_WALKING_RUNNING = "distanceWalkingRunning";
     public static final String WEIGHT = "weight";
-    public static final String BLOOD_PRESSURE = "bloodPressure";
     public static final String UNAVAILABLE = "unavailable";
 
     public static String checkFitSampleType(@NonNull String sampleType) {

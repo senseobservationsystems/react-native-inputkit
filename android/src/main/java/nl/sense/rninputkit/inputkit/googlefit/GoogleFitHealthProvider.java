@@ -2,10 +2,11 @@ package nl.sense.rninputkit.inputkit.googlefit;
 
 import android.content.Context;
 import android.content.Intent;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import android.util.Log;
 import android.util.Pair;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -18,7 +19,6 @@ import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import nl.sense.rninputkit.inputkit.HealthProvider;
@@ -30,7 +30,6 @@ import nl.sense.rninputkit.inputkit.constant.Constant;
 import nl.sense.rninputkit.inputkit.constant.IKStatus;
 import nl.sense.rninputkit.inputkit.constant.Interval;
 import nl.sense.rninputkit.inputkit.constant.SampleType;
-import nl.sense.rninputkit.inputkit.entity.IKValue;
 import nl.sense.rninputkit.inputkit.entity.SensorDataPoint;
 import nl.sense.rninputkit.inputkit.entity.StepContent;
 import nl.sense.rninputkit.inputkit.entity.TimeInterval;
@@ -40,8 +39,6 @@ import nl.sense.rninputkit.inputkit.helper.AppHelper;
 import nl.sense.rninputkit.inputkit.helper.InputKitTimeUtils;
 import nl.sense.rninputkit.inputkit.status.IKProviderInfo;
 import nl.sense.rninputkit.inputkit.status.IKResultInfo;
-
-import static nl.sense.rninputkit.inputkit.constant.IKStatus.Code.IK_NOT_AVAILABLE;
 
 /**
  * Created by panjiyudasetya on 10/13/17.
@@ -157,68 +154,6 @@ public class GoogleFitHealthProvider extends HealthProvider {
     }
 
     @Override
-    public void getDistance(final long startTime,
-                            final long endTime,
-                            final int limit,
-                            @NonNull final Result<Float> callback) {
-        if (isInvalidContext(getContext(), callback)) return;
-        if (!isAvailable(callback)) return;
-        if (!InputKitTimeUtils.validateTimeInput(startTime, endTime, callback)) return;
-
-        callWithValidToken(new AccessTokenListener() {
-            @Override
-            public void onSuccess() {
-                Options.Builder builder = new Options.Builder()
-                        .startTime(startTime)
-                        .endTime(endTime)
-                        .limitation(limit <= 0 ? DataReadRequest.NO_LIMIT : limit);
-                // Guard the aggregation data. If limit is not specified then we need to use
-                // data aggregation to optimize query performance.
-                if (limit <= 0) builder.useDataAggregation();
-                Options options = builder.build();
-                mFitHistory.getDistance(options, callback);
-            }
-
-            @Override
-            public void onFailure(Exception e) {
-                callback.onError(new IKResultInfo(IKStatus.Code.INVALID_REQUEST,
-                        e.getMessage()));
-            }
-        }, SampleType.DISTANCE_WALKING_RUNNING);
-    }
-
-    @Override
-    public void getDistanceSamples(final long startTime,
-                                   final long endTime,
-                                   final int limit,
-                                   @NonNull final Result<List<IKValue<Float>>> callback) {
-        if (isInvalidContext(getContext(), callback)) return;
-        if (!isAvailable(callback)) return;
-        if (!InputKitTimeUtils.validateTimeInput(startTime, endTime, callback)) return;
-
-        callWithValidToken(new AccessTokenListener() {
-            @Override
-            public void onSuccess() {
-                Options.Builder builder = new Options.Builder()
-                        .startTime(startTime)
-                        .endTime(endTime)
-                        .limitation(limit <= 0 ? DataReadRequest.NO_LIMIT : limit);
-                // Guard the aggregation data. If limit is not specified then we need to use
-                // data aggregation to optimize query performance.
-                if (limit <= 0) builder.useDataAggregation();
-                Options options = builder.build();
-                mFitHistory.getDistanceSamples(options, callback);
-            }
-
-            @Override
-            public void onFailure(Exception e) {
-                callback.onError(new IKResultInfo(IKStatus.Code.INVALID_REQUEST,
-                        e.getMessage()));
-            }
-        }, SampleType.DISTANCE_WALKING_RUNNING);
-    }
-
-    @Override
     public void getStepCount(@NonNull final Result<Integer> callback) {
         Context context = getContext();
         if (isInvalidContext(context, callback)) return;
@@ -301,23 +236,6 @@ public class GoogleFitHealthProvider extends HealthProvider {
                         e.getMessage()));
             }
         }, SampleType.STEP_COUNT);
-    }
-
-    @Override
-    public void getSleepAnalysisSamples(long startTime, long endTime, @NonNull Result callback) {
-        callback.onError(new IKResultInfo(IK_NOT_AVAILABLE, IKStatus.INPUT_KIT_SERVICE_NOT_AVAILABLE));
-    }
-
-    @Override
-    public void getBloodPressure(long startTime, long endTime, @NonNull Result callback) {
-        // TODO: Implement Google Fit API to get blood pressure data from GF
-        callback.onError(new IKResultInfo(IK_NOT_AVAILABLE, IKStatus.INPUT_KIT_SERVICE_NOT_AVAILABLE));
-    }
-
-    @Override
-    public void getWeight(long startTime, long endTime, @NonNull Result callback) {
-        // TODO: Implement Google Fit API to get weight data from GF
-        callback.onError(new IKResultInfo(IK_NOT_AVAILABLE, IKStatus.INPUT_KIT_SERVICE_NOT_AVAILABLE));
     }
 
     @Override

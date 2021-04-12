@@ -19,14 +19,8 @@
     >
         <!-- Play service metadata -->
         <meta-data
-            android:name="com.google.android.gms.version;
-            com.samsung.android.health.permission.read"
-            android:value="com.samsung.health.step_count;
-            com.samsung.shealth.step_daily_trend;
-            com.samsung.health.sleep;
-            com.samsung.health.blood_pressure;
-            com.samsung.health.weight;
-            @integer/google_play_services_version;"
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version"
         />
 
         <!-- Receiver -->
