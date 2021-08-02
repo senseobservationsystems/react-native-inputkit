@@ -1,5 +1,5 @@
 //
-//  Utils.swift
+//  UtilsIK.swift
 //  RNBackgroundGeolocationSample
 //
 //  Created by Tatsuya Kaneko on 07/06/2017.
@@ -8,8 +8,8 @@
 
 import Foundation
 
-@objc(Utils)
-class Utils: NSObject {
+@objc(UtilsIK)
+class UtilsIK: NSObject {
 
   @objc func abort() {
     NativeLogger.logNativeEvent("=====================Crash!!===================================")

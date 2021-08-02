@@ -1,5 +1,5 @@
 //
-//  UtilBridge.m
+//  UtilsIKBridge.m
 //  RNBackgroundGeolocationSample
 //
 //  Created by Tatsuya Kaneko on 07/06/2017.
@@ -9,7 +9,7 @@
 
 #import <React/RCTBridgeModule.h>
 
-@interface RCT_EXTERN_MODULE(Utils, NSObject)
+@interface RCT_EXTERN_MODULE(UtilsIK, NSObject)
 
 RCT_EXTERN_METHOD(abort);
 
