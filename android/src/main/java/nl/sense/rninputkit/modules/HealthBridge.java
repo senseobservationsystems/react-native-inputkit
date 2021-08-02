@@ -14,7 +14,6 @@ import nl.sense.rninputkit.helper.ValueConverter;
 import nl.sense.rninputkit.helper.WeightConverter;
 import nl.sense.rninputkit.modules.health.HealthPermissionPromise;
 import nl.sense.rninputkit.modules.health.event.EventHandler;
-import nl.sense.rninputkit.service.activity.detector.ActivityMonitoringService;
 import com.facebook.react.bridge.ActivityEventListener;
 import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.LifecycleEventListener;
@@ -103,7 +102,6 @@ public class HealthBridge extends ReactContextBaseJavaModule implements Activity
     public void startMonitoring(final String typeString, final Promise promise) {
         switch (mActiveProvider) {
             case GOOGLE_FIT:
-                ActivityMonitoringService.subscribe(mReactContext);
                 promise.resolve(null);
                 break;
 
@@ -124,7 +122,6 @@ public class HealthBridge extends ReactContextBaseJavaModule implements Activity
     public void stopMonitoring(final String typeString, final Promise promise) {
         switch (mActiveProvider) {
             case GOOGLE_FIT:
-                ActivityMonitoringService.unsubscribe(mReactContext);
                 promise.resolve(null);
                 break;
 
