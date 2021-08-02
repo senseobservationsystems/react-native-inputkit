@@ -1,11 +1,14 @@
 package nl.sense.rninputkit.inputkit.googlefit.history;
 
 import androidx.annotation.NonNull;
+
+import android.util.Log;
 import android.util.Pair;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 
 import nl.sense.rninputkit.inputkit.entity.TimeInterval;
@@ -48,23 +51,26 @@ public class SafeRequestHandler {
      * @return List of pair of start and end time
      */
     public List<Pair<Long, Long>> getSafeRequest(long startDate, long endDate, TimeInterval timeInterval) {
+        // Get the time difference between start and end date
         long diffMillis = endDate - startDate;
-        final long safeHours  = getSafeHours(timeInterval);
+
+        // Get the safe hours (i.e the number of hours we can safely retrieve from google fit)
+        // based on the time difference between start and end time
+        final long safeIntervalInMilliseconds = getSafeIntervalInMilliseconds(timeInterval);
+
         List<Pair<Long, Long>> request = new ArrayList<>();
-        if (diffMillis <= TimeUnit.HOURS.toMillis(safeHours)) {
+
+        // Check if the difference between Start and End Time is less then safeHours
+        if (diffMillis <= safeIntervalInMilliseconds) {
             request.add(Pair.create(startDate, endDate));
             return request;
         }
 
         long start = startDate;
-        Pair<Integer, Integer> valuePairCalAddition = getValuePairCalAddition(timeInterval);
 
         while (start < endDate) {
-            Calendar cal = Calendar.getInstance();
-            cal.setTimeInMillis(start);
-            cal.add(valuePairCalAddition.first, valuePairCalAddition.second);
+            long relativeEndTime = start + safeIntervalInMilliseconds;
 
-            long relativeEndTime = cal.getTimeInMillis();
             long spanRelStartTime = getStartOfDay(relativeEndTime);
 
             if (relativeEndTime > spanRelStartTime) {
@@ -74,46 +80,26 @@ public class SafeRequestHandler {
             if (relativeEndTime > endDate) relativeEndTime = endDate;
 
             request.add(Pair.create(start, relativeEndTime));
+
             start = relativeEndTime;
         }
         return request;
     }
 
     /**
-     * Get safe hours for a given {@link TimeInterval}
-     * @param timeInterval {@link TimeInterval}
-     * @return Total hours
-     */
-    private long getSafeHours(@NonNull TimeInterval timeInterval) {
-        TimeUnit timeUnit = timeInterval.getTimeUnit();
-        final int safeNumber = getValuePairCalAddition(timeInterval).second;
-        if (timeUnit == TimeUnit.DAYS) {
-            return TimeUnit.DAYS.toHours(safeNumber);
-        }
-        return safeNumber;
-    }
-
-    /**
-     * Get pair of value addition for calendar within available safe number.
+     * Get a safe interval in milliseconds for the time interval passed to the function
      * @param timeInterval Given time interval
-     * @return Pair of calendar data field and addition value
+     * @return The safe number of milliseconds to use as interval
      */
-    private Pair<Integer, Integer> getValuePairCalAddition(TimeInterval timeInterval) {
+    private long getSafeIntervalInMilliseconds(TimeInterval timeInterval) {
+        // TODO: Add unit test for 1001 days
         if (timeInterval.getTimeUnit() == TimeUnit.DAYS) {
-            return Pair.create(Calendar.DATE, SAFE_DAYS_NUMBER_FOR_DAILY);
+            return TimeUnit.DAYS.toMillis(SAFE_DAYS_NUMBER_FOR_DAILY);
         }
         if (timeInterval.getTimeUnit() == TimeUnit.HOURS) {
-            return Pair.create(Calendar.HOUR_OF_DAY, SAFE_HOURS_NUMBER_FOR_HOURLY);
+            return TimeUnit.HOURS.toMillis(SAFE_HOURS_NUMBER_FOR_HOURLY);
         }
-        if (timeInterval.getTimeUnit() == TimeUnit.MINUTES) {
-            switch (timeInterval.getValue()) {
-                case 1  : // 1  minute interval
-                case 10 : // 10 minute interval
-                case 30 : // 30 minute interval
-                default : return Pair.create(Calendar.HOUR_OF_DAY, SAFE_HOURS_NUMBER_FOR_MINUTELY);
-            }
-        }
-        return Pair.create(Calendar.HOUR_OF_DAY, SAFE_HOURS_NUMBER_FOR_MINUTELY);
+        return TimeUnit.HOURS.toMillis(SAFE_HOURS_NUMBER_FOR_MINUTELY);
     }
 
     /**
@@ -126,7 +112,7 @@ public class SafeRequestHandler {
      * @return Time of end of day of the anchor time.
      */
     private long getStartOfDay(long anchorTime) {
-        Calendar cal = Calendar.getInstance();
+        Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
         cal.setTimeInMillis(anchorTime);
         cal.set(Calendar.HOUR_OF_DAY, 0);
         cal.set(Calendar.MINUTE, 0);
