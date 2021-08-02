@@ -39,16 +39,10 @@ public class ActivityHandler {
         boolean isStepCountActive = InputKit.getInstance(mContext)
                 .isPermissionsAuthorised(new String[]{STEP_COUNT});
 
-        boolean isDistanceActive = InputKit.getInstance(mContext)
-                .isPermissionsAuthorised(new String[]{DISTANCE_WALKING_RUNNING});
-
         String type = intent.getExtras().getString(ACTIVITY_TYPE, "");
         if (type.equals(STEP_DISTANCE_ACTIVITY)) {
             if (isStepCountActive) {
                 emitStepCount();
-            }
-            if (isDistanceActive) {
-                emitDistance();
             }
         }
     }
@@ -73,28 +67,6 @@ public class ActivityHandler {
                 });
     }
 
-    private void emitDistance() {
-        final List<IKValue<?>> payloads = new ArrayList<>();
-        final Pair<Long, Long> interval = createInterval();
-        InputKit.getInstance(mContext).getDistance(
-                interval.first,
-                interval.second,
-                0,
-                new InputKit.Result<Float>() {
-                    @Override
-                    public void onNewData(Float data) {
-                        payloads.add(new IKValue<>(
-                                data,
-                                new DateContent(interval.first),
-                                new DateContent(interval.second)
-                        ));
-                        emit(new SensorDataPoint(DISTANCE_WALKING_RUNNING, payloads));
-                    }
-
-                    @Override
-                    public void onError(@NonNull IKResultInfo error) { }
-                });
-    }
 
     private void emit(final SensorDataPoint dataPoint) {
         // Emit sensor data point to JS

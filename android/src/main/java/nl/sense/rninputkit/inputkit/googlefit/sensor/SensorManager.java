@@ -39,7 +39,6 @@ import static nl.sense.rninputkit.inputkit.constant.DataSampling.DEFAULT_TIME_SA
 
 public class SensorManager {
     private StepSensor mStepSensor;
-    private DistanceSensor mDistanceSensor;
     private Context mContext;
     private Map<String, SensorListener<SensorDataPoint>> mSensorListeners;
     // Step tracking data point listener
@@ -76,7 +75,6 @@ public class SensorManager {
     public SensorManager(@NonNull Context context) {
         mContext = context;
         mStepSensor = new StepSensor(mContext);
-        mDistanceSensor = new DistanceSensor(mContext);
         mSensorListeners = new HashMap<>();
     }
 
@@ -103,8 +101,6 @@ public class SensorManager {
                               @NonNull Pair<Integer, TimeUnit> samplingRate) {
         if (sampleType.equals(SampleType.STEP_COUNT)) {
             startStepTracking(samplingRate);
-        } else if (sampleType.equals(SampleType.DISTANCE_WALKING_RUNNING)) {
-            startDistanceTracking(samplingRate);
         }
     }
 
@@ -116,59 +112,9 @@ public class SensorManager {
     public void stopTracking(@NonNull @SampleName String sampleType) {
         if (sampleType.equals(SampleType.STEP_COUNT)) {
             stopStepTracking();
-        } else if (sampleType.equals(SampleType.DISTANCE_WALKING_RUNNING)) {
-            stopDistanceTracking();
         }
     }
 
-    /**
-     * Stop all sensor tracking.
-     */
-    @SuppressWarnings("unused")
-    public void stopTrackingAll(@NonNull final SensorListener<SensorDataPoint> listener) {
-        mStepSensor.unsubscribe()
-            .continueWithTask(new Continuation<Boolean, Task<Boolean>>() {
-                @Override
-                public Task<Boolean> then(@NonNull Task<Boolean> task) {
-                    return mDistanceSensor.unsubscribe();
-                }
-            })
-            .addOnSuccessListener(new OnSuccessListener<Boolean>() {
-                @Override
-                public void onSuccess(Boolean result) {
-                    handleResponse(true,
-                            listener,
-                            SampleType.STEP_COUNT,
-                            SampleType.DISTANCE_WALKING_RUNNING);
-                }
-            })
-            .addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    handleResponse(false,
-                            listener,
-                            SampleType.STEP_COUNT,
-                            SampleType.DISTANCE_WALKING_RUNNING);
-                }
-            });
-    }
-
-    private void handleResponse(boolean isSuccess,
-                                @NonNull SensorListener<SensorDataPoint> listener,
-                                @NonNull String... sensorTypes) {
-        String message;
-        int status;
-        if (isSuccess) {
-            status = IKStatus.Code.VALID_REQUEST;
-            message = String.format("%s sensor samples has been stopped.",
-                    Arrays.toString(sensorTypes));
-        } else {
-            status = IKStatus.Code.INVALID_REQUEST;
-            message = String.format("%s sensor samples has been stopped.",
-                    Arrays.toString(sensorTypes));
-        }
-        listener.onUnsubscribe(new IKResultInfo(status, message));
-    }
 
     /**
      * Helper function to start step count sensor api
@@ -203,42 +149,6 @@ public class SensorManager {
 
         mStepSensor.unsubscribe(listener);
     }
-
-    /**
-     * Helper function to start distance walking or running sensor api
-     * @param samplingRate sensor sampling rate.
-     *                     Sensor will be started every X-Time Unit, for instance : { 5, {@link TimeUnit#MINUTES} }.
-     *                     If sampling rate is unspecified it will be set to 10 minute interval.
-     */
-    private void startDistanceTracking(@NonNull Pair<Integer, TimeUnit> samplingRate) {
-        final SensorListener listener = mSensorListeners.get(SampleType.DISTANCE_WALKING_RUNNING);
-        if (listener == null) {
-            String message = getStartFailureMessage(SampleType.DISTANCE_WALKING_RUNNING);
-            throw new IllegalStateException(message);
-        }
-
-        int rate = (samplingRate.first == null || samplingRate.first <= 0)
-                ? DEFAULT_TIME_SAMPLING_RATE : samplingRate.first;
-        TimeUnit timeUnit = samplingRate.second == null
-                ? DEFAULT_SAMPLING_TIME_UNIT : samplingRate.second;
-        mDistanceSensor.setOptions(rate, timeUnit, mDistanceDataPointListener);
-
-        mDistanceSensor.subscribe(listener);
-    }
-
-    /**
-     * Helper function to stop distance walking or running sensor api
-     */
-    private void stopDistanceTracking() {
-        final SensorListener listener = mSensorListeners.get(SampleType.DISTANCE_WALKING_RUNNING);
-        if (listener == null) {
-            String message = getStartFailureMessage(SampleType.DISTANCE_WALKING_RUNNING);
-            throw new IllegalStateException(message);
-        }
-
-        mDistanceSensor.unsubscribe(listener);
-    }
-
     /**
      * Helper function to generate failure message
      * @param sensorType sensor type name

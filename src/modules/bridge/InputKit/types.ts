@@ -85,7 +85,7 @@ export interface IKDate {
 export declare type Interval = 'week' | 'day' | 'hour' | 'tenMinute';
 
 export declare type RealTimeSampleType = 'stepCount' | 'distanceWalkingRunning';
-
+//TODO currently we only use stepCount. Is it safe to delete 'sleep' and 'distanceWalkingRunning'?
 export declare type SampleType = 'sleep' | 'stepCount' | 'distanceWalkingRunning';
 
 export declare type HealthProvider = 'googleFit' | 'healthKit';

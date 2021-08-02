@@ -7,6 +7,4 @@ package nl.sense.rninputkit.inputkit.constant;
 public class RequiredApp {
     private RequiredApp() { }
     public static final String GOOGLE_FIT_PACKAGE_NAME = "com.google.android.apps.fitness";
-    public static final String PLAY_SERVICE_PACKAGE_NAME = "com.google.android.gms";
-    public static final String SAMSUNG_HEALTH_PACKAGE_NAME = "com.sec.android.app.shealth";
 }

@@ -14,12 +14,10 @@ import nl.sense.rninputkit.inputkit.HealthProvider.ProviderType;
 import nl.sense.rninputkit.inputkit.HealthProvider.SensorListener;
 import nl.sense.rninputkit.inputkit.constant.Interval;
 import nl.sense.rninputkit.inputkit.constant.SampleType;
-import nl.sense.rninputkit.inputkit.entity.BloodPressure;
 import nl.sense.rninputkit.inputkit.entity.IKValue;
 import nl.sense.rninputkit.inputkit.entity.SensorDataPoint;
 import nl.sense.rninputkit.inputkit.entity.StepContent;
 import nl.sense.rninputkit.inputkit.entity.Weight;
-import nl.sense.rninputkit.inputkit.shealth.SamsungHealthProvider;
 import nl.sense.rninputkit.inputkit.status.IKResultInfo;
 import nl.sense.rninputkit.inputkit.status.IKProviderInfo;
 import nl.sense.rninputkit.inputkit.googlefit.GoogleFitHealthProvider;
@@ -32,7 +30,6 @@ public class InputKit implements IReleasableHostProvider {
     private static InputKit sInputKit;
     private HealthProvider mCurrentHealthProvider;
     private GoogleFitHealthProvider mGoogleFitHealthProvider;
-    private SamsungHealthProvider mSamsungHealthProvider;
 
     /**
      * A callback result for each Input Kit functionality.
@@ -82,7 +79,6 @@ public class InputKit implements IReleasableHostProvider {
 
     private InputKit(@NonNull Context context) {
         mGoogleFitHealthProvider = new GoogleFitHealthProvider(context, this);
-        mSamsungHealthProvider = new SamsungHealthProvider(context);
 
         // By default it will use Google Fit Health provider
         mCurrentHealthProvider = mGoogleFitHealthProvider;
@@ -116,17 +112,7 @@ public class InputKit implements IReleasableHostProvider {
      */
     @SuppressWarnings("unused")//This is a public API
     public void setHealthProvider(@NonNull ProviderType healthProvider) {
-        switch (healthProvider) {
-            case GOOGLE_FIT: mCurrentHealthProvider = mGoogleFitHealthProvider;
-                break;
-            case SAMSUNG_HEALTH:
-                mCurrentHealthProvider = mSamsungHealthProvider;
-                break;
-            case GARMIN_SDK:
-            default:
-                mCurrentHealthProvider = mGoogleFitHealthProvider;
-                break;
-        }
+        mCurrentHealthProvider = mGoogleFitHealthProvider;
     }
 
     /**
@@ -166,37 +152,6 @@ public class InputKit implements IReleasableHostProvider {
     public boolean isPermissionsAuthorised(String[] permissionType) {
         return mCurrentHealthProvider.isPermissionsAuthorised(permissionType);
     }
-
-    /**
-     * Get total distance of walk on specific time range.
-     *
-     * @param startTime epoch for the start date
-     * @param endTime   epoch for the end date
-     * @param limit     historical data limitation
-     *                  set to 0 if you want to calculate all available distance within specific range
-     * @param callback {@link Result <Float>} containing number of total distance
-     */
-    @SuppressWarnings("unused")//This is a public API
-    public void getDistance(long startTime, long endTime, int limit, @NonNull Result<Float> callback) {
-        mCurrentHealthProvider.getDistance(startTime, endTime, limit, callback);
-    }
-
-    /**
-     * Get sample distance of walk on specific time range.
-     * @param startTime epoch for the start date
-     * @param endTime   epoch for the end date
-     * @param limit     historical data limitation
-     *                  set to 0 if you want to calculate all available distance within specific range
-     * @param callback {@link Result} containing set of available distance
-     */
-    @SuppressWarnings("unused")//This is a public API
-    public void getDistanceSamples(long startTime,
-                                   long endTime,
-                                   int limit,
-                                   @NonNull Result<List<IKValue<Float>>> callback) {
-        mCurrentHealthProvider.getDistanceSamples(startTime, endTime, limit, callback);
-    }
-
     /**
      * Get total Today steps count.
      * @param callback {@link Result <Integer>} containing number of total steps count
@@ -242,37 +197,6 @@ public class InputKit implements IReleasableHostProvider {
                                          int limit,
                                          @NonNull Result<StepContent> callback) {
         mCurrentHealthProvider.getStepCountDistribution(startTime, endTime, interval, limit, callback);
-    }
-
-    /**
-     * Returns data contains sleep analysis data of a specific range. Sorted recent data first.
-     * @param startTime epoch for the start date of the range
-     * @param endTime   epoch for the end date of the range
-     * @param callback  {@link Result} containing a set of sleep analysis samples
-     */
-    public void getSleepAnalysisSamples(long startTime, long endTime,
-                                        @NonNull InputKit.Result<List<IKValue<String>>> callback) {
-        mCurrentHealthProvider.getSleepAnalysisSamples(startTime, endTime, callback);
-    }
-
-    /**
-     * Get blood pressure history
-     * @param startTime epoch for the start date of the range
-     * @param endTime   epoch for the end date of the range
-     * @param callback  {@link Result} containing a set history of user blood pressure
-     */
-    public void getBloodPressure(long startTime, long endTime, @NonNull Result<List<BloodPressure>> callback) {
-        mCurrentHealthProvider.getBloodPressure(startTime, endTime, callback);
-    }
-
-    /**
-     * Get weight history
-     * @param startTime epoch for the start date of the range
-     * @param endTime   epoch for the end date of the range
-     * @param callback  {@link Result} containing a set history of user weight
-     */
-    public void getWeight(long startTime, long endTime, @NonNull Result<List<Weight>> callback) {
-        mCurrentHealthProvider.getWeight(startTime, endTime, callback);
     }
 
     /* Start monitoring health sensors.
@@ -327,23 +251,11 @@ public class InputKit implements IReleasableHostProvider {
                              @NonNull SensorListener<SensorDataPoint> listener) {
         mCurrentHealthProvider.stopTracking(sensorType, listener);
     }
-
-    /**
-     * Stop all tracking specific sensor.
-     *
-     * @param listener {@link SensorListener} sensor listener
-     */
-    @SuppressWarnings("unused")//This is a public API
-    public void stopTrackingAll(@NonNull SensorListener<SensorDataPoint> listener) {
-        mCurrentHealthProvider.stopTrackingAll(listener);
-    }
-
     @Override
     public void release() {
         sInputKit = null;
         mCurrentHealthProvider = null;
         mGoogleFitHealthProvider = null;
-        mSamsungHealthProvider = null;
         // TODO: Put another references which should be released.
     }
 }

@@ -10,7 +10,6 @@ import android.util.Pair;
 
 import nl.sense.rninputkit.data.Constants;
 import nl.sense.rninputkit.data.ProviderName;
-import nl.sense.rninputkit.helper.BloodPressureConverter;
 import nl.sense.rninputkit.helper.ValueConverter;
 import nl.sense.rninputkit.helper.WeightConverter;
 import nl.sense.rninputkit.modules.health.HealthPermissionPromise;
@@ -36,7 +35,6 @@ import nl.sense.rninputkit.inputkit.HealthProvider.ProviderType;
 import nl.sense.rninputkit.inputkit.InputKit;
 import nl.sense.rninputkit.inputkit.constant.IKStatus;
 import nl.sense.rninputkit.inputkit.constant.SampleType;
-import nl.sense.rninputkit.inputkit.entity.BloodPressure;
 import nl.sense.rninputkit.inputkit.entity.IKValue;
 import nl.sense.rninputkit.inputkit.entity.SensorDataPoint;
 import nl.sense.rninputkit.inputkit.entity.StepContent;
@@ -61,8 +59,6 @@ public class HealthBridge extends ReactContextBaseJavaModule implements Activity
     private ReactApplicationContext mReactContext;
     private InputKit mInputKit;
     private List<HealthPermissionPromise> mRequestHealthPromises;
-    private BloodPressureConverter mBloodPressureConverter;
-    private WeightConverter mWeightConverter;
     private ProviderType mActiveProvider;
 
     @SuppressWarnings("unused") // Used by React Native
@@ -72,8 +68,6 @@ public class HealthBridge extends ReactContextBaseJavaModule implements Activity
         mReactContext.addLifecycleEventListener(this);
         mReactContext.addActivityEventListener(this);
 
-        mBloodPressureConverter = new BloodPressureConverter();
-        mWeightConverter = new WeightConverter();
 
         mRequestHealthPromises = new ArrayList<>();
         mActiveProvider = ProviderType.GOOGLE_FIT;
@@ -109,7 +103,6 @@ public class HealthBridge extends ReactContextBaseJavaModule implements Activity
     public void startMonitoring(final String typeString, final Promise promise) {
         switch (mActiveProvider) {
             case GOOGLE_FIT:
-            case SAMSUNG_HEALTH:
                 ActivityMonitoringService.subscribe(mReactContext);
                 promise.resolve(null);
                 break;
@@ -131,7 +124,6 @@ public class HealthBridge extends ReactContextBaseJavaModule implements Activity
     public void stopMonitoring(final String typeString, final Promise promise) {
         switch (mActiveProvider) {
             case GOOGLE_FIT:
-            case SAMSUNG_HEALTH:
                 ActivityMonitoringService.unsubscribe(mReactContext);
                 promise.resolve(null);
                 break;
@@ -147,6 +139,7 @@ public class HealthBridge extends ReactContextBaseJavaModule implements Activity
      * Check Input Kit availability.
      * @param promise contains an information whether successfully connect to Input Kit or not.
      */
+    @Deprecated
     @ReactMethod
     @SuppressWarnings("unused")//Used by React Native application
     public void isAvailable(final Promise promise) {
@@ -197,6 +190,7 @@ public class HealthBridge extends ReactContextBaseJavaModule implements Activity
      * @param promise resolved whenever permission has been authorised
      *                rejected if it hasn;t
      */
+    @Deprecated
     @ReactMethod
     @SuppressWarnings("unused")//Used by React Native application
     public void isPermissionsAuthorised(ReadableArray permissions, final Promise promise) {
@@ -243,70 +237,6 @@ public class HealthBridge extends ReactContextBaseJavaModule implements Activity
         }, getConvertedPermission(permissions));
     }
 
-    /**
-     * Get total distance of walk on specific time range.
-     * @param startTime epoch for the start date
-     * @param endTime   epoch for the end date
-     * @param promise containing number of total distance in meters.
-     */
-    @ReactMethod
-    @SuppressWarnings("unused")//Used by React Native application
-    public void getDistance(final Double startTime,
-                            final Double endTime,
-                            final Promise promise) {
-        Log.d(TAG, "getDistance: " + startTime + ", " + endTime);
-        mInputKit.getDistance(
-                startTime.longValue(),
-                endTime.longValue(),
-                0,
-                new InputKit.Result<Float>() {
-                    @Override
-                    public void onNewData(Float data) {
-                        Log.d(TAG, "getDistance#onNewData: " + data);
-                        promise.resolve(Double.valueOf(data));
-                    }
-
-                    @Override
-                    public void onError(@NonNull IKResultInfo error) {
-                        promise.reject(String.valueOf(error.getResultCode()), error.getMessage());
-                    }
-                });
-    }
-
-    /**
-     * Get distance samples between start and end date (inclusive + overlapping) with the latest ones first and limit them by the limit count.
-     * The distance sample values returned are always in meters
-     * Specify a limit of 0 for unlimited samples
-     * @param startTime epoch for the start date
-     * @param endTime   epoch for the end date
-     * @param promise   containing number of total distance in meters.
-     * @param limit     distance sample set limit
-     */
-    @ReactMethod
-    @SuppressWarnings("unused")//Used by React Native application
-    public void getDistanceSamples(final Double startTime,
-                                   final Double endTime,
-                                   final Integer limit,
-                                   final Promise promise) {
-        Log.d(TAG, "getDistanceSamples: " + startTime + ", " + endTime + ", " + limit);
-        mInputKit.getDistanceSamples(
-                startTime.longValue(),
-                endTime.longValue(),
-                limit,
-                new InputKit.Result<List<IKValue<Float>>>() {
-                    @Override
-                    public void onNewData(List<IKValue<Float>> data) {
-                        WritableArray objects = ValueConverter.toWritableArray(data);
-                        Log.d(TAG, "getDistanceSample#onNewData: " + objects);
-                        promise.resolve(objects);
-                    }
-
-                    @Override
-                    public void onError(@NonNull IKResultInfo error) {
-                        promise.reject(String.valueOf(error.getResultCode()), error.getMessage());
-                    }
-                });
-    }
 
     /**
      * Get total steps count of specific range
@@ -377,73 +307,6 @@ public class HealthBridge extends ReactContextBaseJavaModule implements Activity
                 });
     }
 
-    @ReactMethod
-    @SuppressWarnings("unused")//Used by React Native application
-    public void getSleepAnalysisSamples(final Double startTime,
-                                        final Double endTime,
-                                        final Promise promise) {
-        mInputKit.getSleepAnalysisSamples(
-                startTime.longValue(),
-                endTime.longValue(),
-                new InputKit.Result<List<IKValue<String>>>() {
-                    @Override
-                    public void onNewData(List<IKValue<String>> data) {
-                        WritableArray object = ValueConverter.toWritableArray(data);
-                        promise.resolve(object);
-                    }
-                    @Override
-                    public void onError(@NonNull IKResultInfo error) {
-                        promise.reject(String.valueOf(error.getResultCode()), error.getMessage());
-                    }
-                }
-        );
-    }
-
-    @ReactMethod
-    @SuppressWarnings("unused")//Used by React Native application
-    public void getWeightData(final Double startTime,
-                              final Double endTime,
-                              final Promise promise) {
-        mInputKit.getWeight(
-                startTime.longValue(),
-                endTime.longValue(),
-                new InputKit.Result<List<Weight>>() {
-                    @Override
-                    public void onNewData(List<Weight> data) {
-                        WritableArray object = mWeightConverter.toWritableMap(data);
-                        promise.resolve(object);
-                    }
-                    @Override
-                    public void onError(@NonNull IKResultInfo error) {
-                        promise.reject(String.valueOf(error.getResultCode()), error.getMessage());
-                    }
-                }
-        );
-    }
-
-    @ReactMethod
-    @SuppressWarnings("unused")//Used by React Native application
-    public void getBloodPressure(final Double startTime,
-                                 final Double endTime,
-                                 final Promise promise) {
-        mInputKit.getBloodPressure(
-                startTime.longValue(),
-                endTime.longValue(),
-                new InputKit.Result<List<BloodPressure>>() {
-                    @Override
-                    public void onNewData(List<BloodPressure> data) {
-                        WritableArray object = mBloodPressureConverter.toWritableMap(data);
-                        promise.resolve(object);
-                    }
-                    @Override
-                    public void onError(@NonNull IKResultInfo error) {
-                        promise.reject(String.valueOf(error.getResultCode()), error.getMessage());
-                    }
-                }
-
-        );
-    }
-
     /**
      * Start tracking specific sensor.
      *
@@ -453,6 +316,7 @@ public class HealthBridge extends ReactContextBaseJavaModule implements Activity
      * @param promise    Containing an information of request code and code message whether
      *                   tracking action successfully or not
      */
+    @Deprecated
     @ReactMethod
     @SuppressWarnings("unused")//Used by React Native application
     public void startTracking(final String sampleType,
@@ -503,6 +367,7 @@ public class HealthBridge extends ReactContextBaseJavaModule implements Activity
      * @param promise    Containing an information of request code and code message whether
      *                   tracking action successfully or not
      */
+    @Deprecated
     @ReactMethod
     @SuppressWarnings("unused")//Used by React Native application
     public void stopTracking(final String sampleType,
@@ -526,34 +391,6 @@ public class HealthBridge extends ReactContextBaseJavaModule implements Activity
                     }
                 });
     }
-
-    /**
-     * Stop all tracking sensors.
-     *
-     * @param promise    Containing an information of request code and code message whether
-     *                   tracking action successfully or not
-     */
-    @ReactMethod
-    @SuppressWarnings("unused")//Used by React Native application
-    public void stopTrackingAll(final Promise promise) {
-        mInputKit.stopTrackingAll(new HealthProvider.SensorListener<SensorDataPoint>() {
-            @Override
-            public void onSubscribe(@NonNull IKResultInfo info) { }
-
-            @Override
-            public void onReceive(@NonNull SensorDataPoint data) { }
-
-            @Override
-            public void onUnsubscribe(@NonNull IKResultInfo info) {
-                if (info.getResultCode() == IKStatus.Code.VALID_REQUEST) {
-                    promise.resolve(info.getMessage());
-                    return;
-                }
-                promise.reject(String.valueOf(info.getResultCode()), info.getMessage());
-            }
-        });
-    }
-
     @Override
     public void onHostResume() {
         // Do nothing here, as long as host module didn't destroyed,
@@ -605,8 +442,7 @@ public class HealthBridge extends ReactContextBaseJavaModule implements Activity
         for (Object permissionType : permissionTypes.toArrayList()) {
             if (String.valueOf(permissionType).equals(SampleType.STEP_COUNT)
                     || String.valueOf(permissionType).equals(SampleType.DISTANCE_WALKING_RUNNING)
-                    || String.valueOf(permissionType).equals(SampleType.WEIGHT)
-                    || String.valueOf(permissionType).equals(SampleType.BLOOD_PRESSURE)) {
+                    || String.valueOf(permissionType).equals(SampleType.WEIGHT)) {
                 converted.add(String.valueOf(permissionType));
             }
         }

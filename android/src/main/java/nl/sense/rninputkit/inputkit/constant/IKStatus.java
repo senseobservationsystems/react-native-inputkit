@@ -21,11 +21,6 @@ public class IKStatus {
             String.format("UNREACHABLE_APPLICATION_CONTEXT \n%s %s",
                     "Context was no longer maintained in memory, ",
                     "you might need to re-initiate InputKit instance before use any apis.");
-    public static final String SAMSUNG_HEALTH_IS_NOT_AVAILABLE = "SAMSUNG_HEALTH_IS_NOT_AVAILABLE";
-    public static final String SAMSUNG_HEALTH_NOT_INSTALLED = "SAMSUNG_HEALTH_NOT_INSTALLED";
-    public static final String SAMSUNG_HEALTH_OLD_VERSION = "SAMSUNG_HEALTH_OLD_VERSION";
-    public static final String SAMSUNG_HEALTH_DISABLED = "SAMSUNG_HEALTH_DISABLED";
-    public static final String SAMSUNG_HEALTH_USER_AGREEMENT_NEEDED = "SAMSUNG_HEALTH_USER_AGREEMENT_NEEDED";
 
     public abstract class Code {
         public static final int VALID_REQUEST = 0;
@@ -36,9 +31,5 @@ public class IKStatus {
         public static final int OUT_OF_DATE_PLAY_SERVICE = -6;
         public static final int INVALID_REQUEST = -7;
         public static final int REQUIRED_GRANTED_PERMISSIONS = -8;
-
-        public static final int S_HEALTH_PERMISSION_REQUIRED = -9;
-        public static final int S_HEALTH_DISCONNECTED = -10;
-        public static final int S_HEALTH_CONNECTION_ERROR = -11;
     }
 }

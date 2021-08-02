@@ -60,6 +60,7 @@ class Health {
     }
 
     /**
+     * @deprecated unused
      * Check whether the HealthKit/GoogleFit is available on the device.
      *
      * @return Promise containing boolean for whether the HealthKit/GoogleFit is available on the device.
@@ -69,6 +70,7 @@ class Health {
     }
 
     /**
+     * @deprecated unused
      * Check authorised permission for the given SampleType(s) within health provider.
      * @param types: Array of SampleType.
      *
@@ -119,6 +121,7 @@ class Health {
     }
 
     /**
+     * @deprecated unused
      *  Returns Promise containing distance samples for the specific range. Sorted recent data first.
      *
      *  @param startDate: start date of the range.
@@ -206,7 +209,7 @@ class Health {
 
     /**
      *  Returns Promise contains sleep analysis data of a specific range. Sorted recent data first.
-     *
+     *  @deprecated unused
      *  @param startDate: start date of the range.
      *  @param endDate: end date of the range.
      *  @return Promise containing an array of sleep analysis samples formated as:
@@ -245,6 +248,7 @@ class Health {
     }
 
     /**
+     * @deprecated unused
      *  Returns Promise contains weight data value through out a specific range.
      */
     getWeightData(startDate: Date, endDate: Date): Promise<WeightDataPoint[]> {
@@ -252,6 +256,8 @@ class Health {
     }
 
     /**
+     * @deprecated this is restricted api (To be categorized as restricted in spring 2021) 
+     * https://support.google.com/cloud/answer/9110914#restricted-scopes&zippy=%2Cgmail-drive-and-google-fit-apis
      *  Returns Promise contains blood pressure data value through out a specific range.
      */
     getBloodPressure(startDate: Date, endDate: Date): Promise<BloodPressureDataPoint[]> {
@@ -295,6 +301,7 @@ class Health {
     }
 
     /**
+     * @deprecated unused
      * Subscribes to all new data created after the specified date for a particular type of data from
      * Health Data Provider(HealthKit, GoogleFit, etc).
      * Everytime new data is produced in the Health Provider, the callback that you provide as the second
@@ -320,6 +327,7 @@ class Health {
     }
 
     /**
+     * @deprecated unused
      * Unsubscribe the change of data for a particular type of data
      * from Health Data Provider(HealthKit, GoogleFit, etc).
      * When you call this method while the topic is not subscribed, it will not do anything.
@@ -331,6 +339,7 @@ class Health {
     }
 
     /**
+     * @deprecated unused. there is no native method on android
      * Returns historic activity tracking data
      * NOTE: This function can only return activity data from the last 7 days.
      *       If requested for data older than that, the funciton will reject the promis.
@@ -350,6 +359,7 @@ class Health {
     }
 
     /**
+     * @deprecated unused
      * Unsubscribe the change of data for all types of data from Health Data Provider(HealthKit, GoogleFit, etc).
      * When you call this method while no topics are subscribed, it will not do anything.
      */
