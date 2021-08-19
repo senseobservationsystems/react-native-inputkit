@@ -74,11 +74,6 @@ public class HealthTrackerState {
                 enables
         );
 
-        sensorsState.addProperty(
-                SampleType.DISTANCE_WALKING_RUNNING,
-                enables
-        );
-
         // update preference
         PreferenceHelper.add(
                 context,

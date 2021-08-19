@@ -15,7 +15,6 @@ import nl.sense.rninputkit.inputkit.InputKit.Result;
 import nl.sense.rninputkit.inputkit.constant.IKStatus;
 import nl.sense.rninputkit.inputkit.constant.Interval;
 import nl.sense.rninputkit.inputkit.constant.SampleType.SampleName;
-import nl.sense.rninputkit.inputkit.entity.BloodPressure;
 import nl.sense.rninputkit.inputkit.entity.SensorDataPoint;
 import nl.sense.rninputkit.inputkit.entity.StepContent;
 import nl.sense.rninputkit.inputkit.entity.IKValue;
@@ -27,7 +26,7 @@ import static nl.sense.rninputkit.inputkit.constant.IKStatus.Code.IK_NOT_CONNECT
 
 /**
  * This is a Health contract provider which should be implemented on each Health class variants.
- * Eg : Google Fit, Samsung Health, etc.
+ * Eg : Google Fit, etc.
  * <p>
  * Make it as an abstract class in case needed to share variable between Health provider
  * <p>
@@ -59,7 +58,7 @@ public abstract class HealthProvider {
 
     @SuppressWarnings("SpellCheckingInspection")
     public enum ProviderType {
-        GOOGLE_FIT, SAMSUNG_HEALTH, GARMIN_SDK
+        GOOGLE_FIT
     }
 
     /**
@@ -193,34 +192,6 @@ public abstract class HealthProvider {
     public abstract void disconnect(@NonNull Result<Boolean> callback);
 
     /**
-     * Get total distance of walk on specific time range.
-     *
-     * @param startTime epoch for the start date
-     * @param endTime   epoch for the end date
-     * @param limit     historical data limitation
-     *                  set to null if you want to calculate all available distance within specific range
-     * @param callback  {@link Result<Float>} containing number of total distance
-     */
-    public abstract void getDistance(long startTime,
-                                     long endTime,
-                                     int limit,
-                                     @NonNull Result<Float> callback);
-
-    /**
-     * Get sample distance within specific time range.
-     *
-     * @param startTime epoch for the start date
-     * @param endTime   epoch for the end date
-     * @param limit     historical data limitation
-     *                  set to null if you want to calculate all available distance within specific range
-     * @param callback  {@link Result<Float>} containing number of total distance
-     */
-    public abstract void getDistanceSamples(long startTime,
-                                            long endTime,
-                                            int limit,
-                                            @NonNull Result<List<IKValue<Float>>> callback);
-
-    /**
      * Get total Today steps count.
      *
      * @param callback {@link Result<Integer>} containing number of total steps count
@@ -254,40 +225,6 @@ public abstract class HealthProvider {
                                                   @NonNull @Interval.IntervalName String interval,
                                                   int limit,
                                                   @NonNull Result<StepContent> callback);
-
-    /**
-     * Returns data contains sleep analysis data of a specific range. Sorted recent data first.
-     *
-     * @param startTime epoch for the start date of the range
-     * @param endTime   epoch for the end date of the range
-     * @param callback  {@link Result} containing a set of sleep analysis samples
-     */
-    // TODO: Define data type of sleep analysis samples Input Kit result
-    public abstract void getSleepAnalysisSamples(long startTime,
-                                                 long endTime,
-                                                 @NonNull InputKit.Result<List<IKValue<String>>> callback);
-
-    /**
-     * Get blood pressure history
-     *
-     * @param startTime epoch for the start date of the range
-     * @param endTime   epoch for the end date of the range
-     * @param callback  {@link Result} containing a set history of user blood pressure
-     */
-    public abstract void getBloodPressure(long startTime,
-                                          long endTime,
-                                          @NonNull Result<List<BloodPressure>> callback);
-
-    /**
-     * Get blood weight history
-     *
-     * @param startTime epoch for the start date of the range
-     * @param endTime   epoch for the end date of the range
-     * @param callback  {@link Result} containing a set history of user weight
-     */
-    public abstract void getWeight(long startTime,
-                                   long endTime,
-                                   @NonNull Result<List<Weight>> callback);
 
     /**
      * Start monitoring health sensors.
@@ -333,10 +270,4 @@ public abstract class HealthProvider {
     public abstract void stopTracking(@NonNull String sensorType,
                                       @NonNull SensorListener<SensorDataPoint> listener);
 
-    /**
-     * Stop all tracking specific sensor.
-     *
-     * @param listener {@link SensorListener} sensor listener
-     */
-    public abstract void stopTrackingAll(@NonNull SensorListener<SensorDataPoint> listener);
 }
