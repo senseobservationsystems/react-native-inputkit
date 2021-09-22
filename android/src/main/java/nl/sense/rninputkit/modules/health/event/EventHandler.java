@@ -5,7 +5,6 @@ import androidx.annotation.NonNull;
 import android.util.Log;
 
 import nl.sense.rninputkit.modules.LoggerBridge;
-import nl.sense.rninputkit.service.EventHandlerTaskService;
 import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.LifecycleEventListener;
 import com.facebook.react.bridge.Promise;
@@ -139,16 +138,6 @@ public class EventHandler extends ReactContextBaseJavaModule implements Lifecycl
                             @NonNull String eventName,
                             @NonNull SensorDataPoint dataPoint,
                             @NonNull Callback completionBlock) {
-        EventHandlerTaskService.sendEvent(
-                context,
-                new Event.Builder()
-                        .eventId(ShortCodeGenerator.generateEventID())
-                        .eventName(eventName)
-                        .topic(dataPoint.getTopic())
-                        .samples(dataPoint.getPayload())
-                        .completion(completionBlock)
-                        .build()
-        );
     }
 
     // Not exposed to JS
@@ -177,7 +166,7 @@ public class EventHandler extends ReactContextBaseJavaModule implements Lifecycl
             mReactContext
                     .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
                     .emit(event.getEventName(), event.toWritableMap());
-        } else EventHandlerTaskService.sendEvent(mReactContext, event);
+        }
     }
 
     @Override
