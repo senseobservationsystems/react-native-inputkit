@@ -162,7 +162,7 @@ extension HealthBridge { // No NSObject inheritance, since RCTEventEmitter inher
       let stepCountType = HKObjectType.quantityType(forIdentifier: .stepCount)!
       
       guard let intervalComponents = intervals[interval] else {
-        reject(kHealthKitError, "Failed in getStepCountDistribution", InputKitError.unknownInterval)
+        reject(kHealthKitError, "#1 Failed in getStepCountDistribution", InputKitError.unknownInterval)
         return
       }
       
@@ -172,7 +172,7 @@ extension HealthBridge { // No NSObject inheritance, since RCTEventEmitter inher
         
         // Error Check:
         guard error == nil, value != nil, startDate != nil, endDate != nil else {
-          reject(kHealthKitError, "Failed in getStepCountDistribution", error)
+          reject(kHealthKitError, "#2 Failed in getStepCountDistribution", error)
           return
         }
         
