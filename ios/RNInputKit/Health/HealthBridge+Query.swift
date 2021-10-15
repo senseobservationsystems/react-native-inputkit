@@ -54,7 +54,8 @@ extension HealthBridge { // No NSObject inheritance, since RCTEventEmitter inher
         
         // Error Check:
         guard error == nil, value != nil, startDate != nil, endDate != nil else {
-          reject(kHealthKitError, "Failed in getDistance", error)
+            print("Failed in getDistance: \(String(describing: error))")
+            reject(kHealthKitError, "Failed in getDistance", error)
           return
         }
         
@@ -172,6 +173,7 @@ extension HealthBridge { // No NSObject inheritance, since RCTEventEmitter inher
         
         // Error Check:
         guard error == nil, value != nil, startDate != nil, endDate != nil else {
+          print("Failed in getDistance: \(String(describing: error))")
           reject(kHealthKitError, "#2 Failed in getStepCountDistribution", error)
           return
         }
