@@ -187,4 +187,14 @@ public class EventHandler extends ReactContextBaseJavaModule implements Lifecycl
         Log.d(EVENT_HANDLER_MODULE_NAME, "onHostDestroy: Prepare initialize event handler state");
         mIsHostDestroyed = true;
     }
+
+    @ReactMethod
+    public void addListener(String eventName) {
+        // Keep: Required for RN built in Event Emitter Calls.
+    }
+
+    @ReactMethod
+    public void removeListeners(Integer count) {
+        // Keep: Required for RN built in Event Emitter Calls.
+    }
 }
