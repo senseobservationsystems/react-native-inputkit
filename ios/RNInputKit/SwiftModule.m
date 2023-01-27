@@ -14,4 +14,8 @@
 
 RCT_EXTERN_METHOD(swiftMethod:(RCTPromiseResolveBlock _Nonnull)resolve reject:(RCTPromiseRejectBlock _Nonnull)reject);
 
++ (BOOL)requiresMainQueueSetup {
+    return YES;
+}
+
 @end
